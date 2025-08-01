@@ -21,6 +21,7 @@ export interface ThemeColors {
   button: {
     primary: string;
     black: string;
+    white: string;
   };
   placeholder: string;
   border: string;

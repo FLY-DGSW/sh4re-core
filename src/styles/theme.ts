@@ -13,7 +13,7 @@ export const lightTheme: Theme = {
       primary: "#FFFFFF",
       secondary: "#F8FAFD",
       selected: "#F8FAFD",
-      light: "#3A4750",
+      light: "transparent",
     },
     text: {
       primary: "#222222",
@@ -23,9 +23,10 @@ export const lightTheme: Theme = {
     button: {
       primary: "#0095FF",
       black: "#303841",
+      white: "#FFFFFF",
     },
     placeholder: "rgba(22, 22, 22, 0.5)",
-    border: "rgba(0, 0, 0, 0.02)",
+    border: "rgba(224, 224, 224, 0.5)",
   },
   typography,
 };
@@ -33,7 +34,7 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   colors: {
     primary: {
-      blue: "#67C0FF",
+      blue: "#0095FF",
       red: "#FF5D65",
       orange: "#FF8904",
       green: "#9DD549",
@@ -42,21 +43,22 @@ export const darkTheme: Theme = {
       primary: "#2C2C2C",
       secondary: "#282828",
       selected: "#5C5C5C",
-      light: "#FFFFFF",
+      light: "#323232",
     },
     text: {
-      primary: "#FFFFFF",
+      primary: "#222222",
       secondary: "#959595",
-      button: "#222222",
+      button: "#FFFFFF",
     },
     button: {
-      primary: "#0095FF",
-      black: "#F3F3F3",
+      primary: "#2C2C2C",
+      black: "#FFFFFF",
+      white: "#2C2C2C",
     },
     placeholder: "rgba(22, 22, 22, 0.5)",
-    border: "rgba(0, 0, 0, 0.02)",
+    border: "rgba(224, 224, 224, 0.5)",
   },
   typography,
 };
 
-export default darkTheme;
+export default lightTheme;

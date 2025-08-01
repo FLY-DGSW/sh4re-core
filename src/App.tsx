@@ -3,6 +3,7 @@ import Router from "./router";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
+import GlobalStyle from "./styles/GlobalStyle";
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <Router />
         </ThemeProvider>
       </BrowserRouter>

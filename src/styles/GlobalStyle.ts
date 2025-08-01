@@ -141,6 +141,12 @@ const GlobalStyle = createGlobalStyle`
   #root {
     min-height: 100vh;
   }
+  @media (max-width: 768px) {
+    :root {
+      font-size: 80%;
+    }
+  }
+
 `;
 
 export default GlobalStyle;
