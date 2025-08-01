@@ -4,12 +4,12 @@ import token from "@/libs/token/token";
 import { toast } from "react-toastify";
 import ErrorMessages from "@/util/error/errorMessages";
 import axios from "axios";
-import { useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { usernameAtom } from "@/store/usernameAtom";
 
 const useLogin = () => {
   const navigate = useNavigate();
-  const setUsername = useSetAtom(usernameAtom);
+  const [, setUsername] = useAtom(usernameAtom);
 
   const login = async (userInfo: { username: string; password: string }) => {
     try {
