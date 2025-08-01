@@ -1,4 +1,4 @@
-class Token {
+class token {
   public getToken(key: string): string | null {
     return localStorage.getItem(key);
   }
@@ -11,6 +11,5 @@ class Token {
     localStorage.removeItem("accessToken");
   }
 }
-const token = new Token();
 
-export default token;
+export default new token();
