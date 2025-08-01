@@ -31,7 +31,7 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.span`
-  ${typography.subHeading2}
+  font-size: 1rem;
   color: ${({ theme }) => theme.colors.primary.blue};
 `;
 
@@ -49,13 +49,38 @@ export const InputContainer = styled.div`
   gap: 0.5rem;
 `;
 
+export const InputBox = styled.label`
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  border: 1px solid ${({ theme }) => theme.colors.placeholder};
+  box-sizing: border-box;
+  border-radius: 10px;
+`;
+
+export const InputIcon = styled.img`
+  position: absolute;
+  left: 15px;
+  margin-bottom: 3px;
+  user-select: none;
+`;
+
 export const Input = styled.input`
-  border-radius: 0.75rem;
-  padding: 1rem;
   width: 24rem;
   height: 3rem;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  padding-left: 40px;
   background-color: ${({ theme }) => theme.colors.background.light};
   border: 1px solid ${({ theme }) => theme.colors.border};
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.primary.blue};
+    outline: 1px solid ${({ theme }) => theme.colors.primary.blue};
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.placeholder};
+  }
 `;
 
 export const ButtonContainer = styled(InputContainer)``;
@@ -65,12 +90,8 @@ export const Button = styled.button`
   height: 3rem;
   border-radius: 0.75rem;
   background-color: ${({ theme }) => theme.colors.button.black};
+  font-size: 1rem;
   color: white;
   border: none;
   cursor: pointer;
-`;
-
-export const GoogleButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.button.white};
-  color: ${({ theme }) => theme.colors.text.primary};
 `;
