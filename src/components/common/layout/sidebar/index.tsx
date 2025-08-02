@@ -11,9 +11,9 @@ import { useUser } from "@/hooks/auth/login/useUser";
 
 const navItems = [
   { icon: <HomeIcon />, label: "홈", to: "/" },
-  { icon: <AnnouncementIcon />, label: "공지사항", to: "/announcement" },
+  { icon: <AnnouncementIcon />, label: "공지사항", to: "/announcements" },
   { icon: <CodeIcon />, label: "코드", to: "/code" },
-  { icon: <AssignmentIcon />, label: "과제 목록", to: "/assignment" },
+  { icon: <AssignmentIcon />, label: "과제 목록", to: "/assignments" },
   { icon: <HandOutsIcon />, label: "수업 자료", to: "/handouts" },
   { icon: <ProfileIcon />, label: "프로필", to: "/profile" },
 ];
@@ -32,7 +32,11 @@ const Sidebar = () => {
               key={item.label}
               as={Link}
               to={item.to}
-              $active={location.pathname === item.to}
+              $active={
+                item.to === "/"
+                  ? location.pathname === "/"
+                  : location.pathname.startsWith(item.to)
+              }
             >
               <S.NavIcon>{item.icon}</S.NavIcon>
               <span>{item.label}</span>

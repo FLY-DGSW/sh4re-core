@@ -117,5 +117,6 @@ export const AnnouncementContent = styled.div<{ $isOpen: boolean }>`
   ${typography.body1}
   line-height: 1.6;
   white-space: pre-wrap;
-  transition: max-height 0.2s ease, padding 0.2s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease,
+    visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
 `;

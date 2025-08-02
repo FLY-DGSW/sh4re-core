@@ -5,6 +5,8 @@ import Layout from "@/components/common/layout/Layout";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 import AnnouncementPage from "@/pages/student/announcement/index";
 import HandoutsPage from "@/pages/student/handouts/index";
+import AssignmentPage from "./pages/student/assignment";
+import AssignmentSubmitPage from "./pages/student/assignmentSubmit";
 
 const Router = () => {
   return (
@@ -13,7 +15,9 @@ const Router = () => {
       <Route element={<ProtectedRoute />}>
         <Route element={<Layout />}>
           <Route path='/' element={<HomePage />} />
-          <Route path='/announcement' element={<AnnouncementPage />} />
+          <Route path='/announcements' element={<AnnouncementPage />} />
+          <Route path='/assignments' element={<AssignmentPage />} />
+          <Route path='/assignments/:id' element={<AssignmentSubmitPage />} />
           <Route path='/handouts' element={<HandoutsPage />} />
         </Route>
       </Route>
