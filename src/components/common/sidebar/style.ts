@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { typography } from "@/styles/typography";
 
 export const SidebarContainer = styled.div`
   width: 18rem;
@@ -37,6 +38,7 @@ export const NavItem = styled(Link)<{ $active?: boolean }>`
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  ${typography.subHeading2}
   background: ${({ $active, theme }) =>
     $active ? theme.colors.background.secondary : "none"};
   font-size: 1.1rem;
@@ -57,4 +59,8 @@ export const UserInfo = styled.div`
   gap: 0.75rem;
   font-size: 1.25rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  span {
+    ${typography.subHeading1}
+    font-size: 1.25rem;
+  }
 `;
