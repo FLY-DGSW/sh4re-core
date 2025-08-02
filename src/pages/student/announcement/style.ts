@@ -30,11 +30,14 @@ export const AnnouncementList = styled.div`
   background-color: ${({ theme }) => theme.colors.background.secondary};
 `;
 
+export const AnnouncementWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.background.primary};
+`;
+
 export const AnnouncementItem = styled.div`
   display: flex;
   align-items: center;
   padding: 1.25rem 1.5rem;
-  background-color: ${({ theme }) => theme.colors.background.primary};
   cursor: pointer;
 `;
 
@@ -70,7 +73,20 @@ export const AnnouncementDate = styled.span`
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
-export const ChevronIcon = styled.span`
+export const ChevronIcon = styled.span<{ $isOpen: boolean }>`
   ${typography.body2}
   color: ${({ theme }) => theme.colors.text.secondary};
+  transition: transform 0.3s ease;
+  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0deg)")};
+`;
+
+export const AnnouncementContent = styled.div<{ isOpen: boolean }>`
+  padding: ${({ isOpen }) => (isOpen ? "1.5rem" : "0 1.5rem")};
+  max-height: ${({ isOpen }) => (isOpen ? "1000px" : "0")};
+  overflow: hidden;
+  color: ${({ theme }) => theme.colors.text.primary};
+  ${typography.body1}
+  line-height: 1.6;
+  white-space: pre-wrap;
+  transition: max-height 0.2s ease, padding 0.2s ease;
 `;
