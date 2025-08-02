@@ -355,7 +355,7 @@ const AnnouncementPage = () => {
                   </S.ChevronIcon>
                 </S.AnnouncementMeta>
               </S.AnnouncementItem>
-              <S.AnnouncementContent isOpen={openItemId === announcement.id}>
+              <S.AnnouncementContent $isOpen={openItemId === announcement.id}>
                 {announcement.content}
               </S.AnnouncementContent>
             </S.AnnouncementWrapper>
