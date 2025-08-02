@@ -1,11 +1,8 @@
+import { ACCESS_TOKEN_KEY } from "@/constants/token.constants";
+import token from "@/libs/token/token";
 import axios, { AxiosInstance } from "axios";
 
-const ACCESS_TOKEN_KEY = "accessToken";
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-
-const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
-const setAccessToken = (token: string) =>
-  localStorage.setItem(ACCESS_TOKEN_KEY, token);
 
 const sh4reCustomAxios: AxiosInstance = axios.create({
   baseURL: SERVER_URL,
@@ -15,9 +12,9 @@ const sh4reCustomAxios: AxiosInstance = axios.create({
 });
 
 sh4reCustomAxios.interceptors.request.use((config) => {
-  const token = getAccessToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  const accessToken = token.getToken(ACCESS_TOKEN_KEY);
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
   } // 토큰 있으면 header에 넣기
   return config;
 });
@@ -39,7 +36,7 @@ sh4reCustomAxios.interceptors.response.use(
         });
 
         const { accessToken } = res.data.data;
-        setAccessToken(accessToken);
+        token.setToken(ACCESS_TOKEN_KEY, accessToken);
 
         originalRequest.headers = {
           ...originalRequest.headers,
@@ -49,7 +46,6 @@ sh4reCustomAxios.interceptors.response.use(
         return sh4reCustomAxios(originalRequest);
       } catch (refreshError) {
         localStorage.removeItem(ACCESS_TOKEN_KEY);
-        window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }

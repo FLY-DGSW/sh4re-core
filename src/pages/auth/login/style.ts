@@ -1,4 +1,3 @@
-import { typography } from "@/styles/typography";
 import styled from "styled-components";
 
 export const Container = styled.div`

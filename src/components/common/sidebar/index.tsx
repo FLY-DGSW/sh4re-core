@@ -1,7 +1,5 @@
 import * as S from "./style";
 import Sh4reLogo from "@/assets/sh4re-logo.svg?url";
-import { useAtom } from "jotai";
-import { usernameAtom } from "@/store/usernameAtom";
 import { Link, useLocation } from "react-router-dom";
 import HomeIcon from "@/assets/sidebar/home.svg";
 import AnnouncementIcon from "@/assets/sidebar/announcement.svg";
@@ -9,6 +7,7 @@ import CodeIcon from "@/assets/sidebar/code.svg";
 import AssignmentIcon from "@/assets/sidebar/assignment.svg";
 import HandOutsIcon from "@/assets/sidebar/handouts.svg";
 import ProfileIcon from "@/assets/sidebar/profile.svg";
+import { useUser } from "@/hooks/auth/login/useUser";
 
 const navItems = [
   { icon: <HomeIcon />, label: "홈", to: "/" },
@@ -20,8 +19,7 @@ const navItems = [
 ];
 
 const Sidebar = () => {
-  const [username] = useAtom(usernameAtom);
-  console.log(username);
+  const { data: user } = useUser();
   const location = useLocation();
 
   return (
@@ -43,7 +41,7 @@ const Sidebar = () => {
         </S.Navigation>
         <S.UserInfo>
           <ProfileIcon />
-          <span>{username}</span>
+          <span>{user.name}</span>
         </S.UserInfo>
       </S.BottomSection>
     </S.SidebarContainer>

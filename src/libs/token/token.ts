@@ -1,3 +1,5 @@
+import { ACCESS_TOKEN_KEY } from "@/constants/token.constants";
+
 class token {
   public getToken(key: string): string | null {
     return localStorage.getItem(key);
@@ -8,7 +10,7 @@ class token {
   }
 
   public removeToken() {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
   }
 }
 

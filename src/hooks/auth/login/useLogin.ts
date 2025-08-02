@@ -4,12 +4,12 @@ import token from "@/libs/token/token";
 import { toast } from "react-toastify";
 import ErrorMessages from "@/util/error/errorMessages";
 import axios from "axios";
-import { useAtom } from "jotai";
-import { usernameAtom } from "@/store/usernameAtom";
+import { ACCESS_TOKEN_KEY } from "@/constants/token.constants";
+import { useUser } from "./useUser";
 
 const useLogin = () => {
   const navigate = useNavigate();
-  const [, setUsername] = useAtom(usernameAtom);
+  const { refetch: refetchUser } = useUser();
 
   const login = async (userInfo: { username: string; password: string }) => {
     try {
@@ -27,10 +27,9 @@ const useLogin = () => {
 
         if (data) {
           const accessToken = data.data.accessToken;
-          token.setToken("accessToken", accessToken);
-          setUsername(userInfo.username);
-          console.log("로그인 성공", data);
-          toast.success(`${userInfo.username}님, 환영합니다!`);
+          token.setToken(ACCESS_TOKEN_KEY, accessToken);
+          const { data: user } = await refetchUser();
+          toast.success(`${user.name}님, 환영합니다!`);
           navigate("/");
         }
       }
