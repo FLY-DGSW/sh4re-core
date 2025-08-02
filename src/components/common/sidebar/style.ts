@@ -11,6 +11,8 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 2.75rem;
+  overflow-y: hidden;
+  position: fixed;
 `;
 
 export const Logo = styled.img`
