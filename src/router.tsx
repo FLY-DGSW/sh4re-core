@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "./pages/auth/login";
-import Layout from "@/components/ui/layout/Layout";
-import ProtectedRoute from "./components/common/ProtectedRoute";
+import Layout from "@/components/common/layout/Layout";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
 import AnnouncementPage from "@/pages/student/announcement/index";
 import HandoutsPage from "@/pages/student/handouts/index";
 

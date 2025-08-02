@@ -16,10 +16,22 @@ export const MainContent = styled.div`
   overflow-y: auto;
 `;
 
+export const PageHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const PageTitle = styled.span`
   ${typography.heading1}
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.text.primary};
+`;
+
+export const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 export const HandoutList = styled.div`

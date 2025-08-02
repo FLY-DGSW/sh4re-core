@@ -3,7 +3,7 @@ import Router from "./router";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import Toast from "./components/common/toast/toast";
+import Toast from "./components/ui/toast/index";
 
 function App() {
   return (
