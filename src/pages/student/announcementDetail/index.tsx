@@ -14,7 +14,7 @@ const AnnouncementsDetailPage = () => {
   }
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/announcements");
   };
 
   return (

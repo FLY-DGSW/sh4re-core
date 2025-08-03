@@ -15,7 +15,8 @@ export interface AnnouncementsHeaderProps {
   sortOrder: string;
   showNoticesOnly: boolean;
   handleSortChange: (order: string) => void;
-  handleSearch: (term: string) => void;
+  searchTerm: string;
+  handleSearchChange: (term: string) => void;
   handleShowNoticesOnlyChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

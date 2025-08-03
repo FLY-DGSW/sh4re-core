@@ -11,7 +11,8 @@ const sortOptions = [
 const AssignmentHeader = ({
   sortOrder,
   handleSortChange,
-  handleSearch,
+  searchTerm,
+  handleSearchChange,
 }: AssignmentHeaderProps) => {
   return (
     <S.PageHeader>
@@ -22,7 +23,11 @@ const AssignmentHeader = ({
           value={sortOrder}
           onChange={handleSortChange}
         />
-        <SearchInput onSearch={handleSearch} placeholder='과제 찾기' />
+        <SearchInput
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder='과제 찾기'
+        />
       </S.HeaderActions>
     </S.PageHeader>
   );

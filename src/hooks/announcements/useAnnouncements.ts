@@ -1,10 +1,9 @@
 import { useState, useMemo, useCallback } from "react";
 import { announcements } from "@/constants/announcementsData";
 
-export const useAnnouncements = () => {
+export const useAnnouncements = (searchTerm: string) => {
   const [openItemId, setOpenItemId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("date");
   const [showNoticesOnly, setShowNoticesOnly] = useState(false);
   const itemsPerPage = 10;
@@ -47,11 +46,6 @@ export const useAnnouncements = () => {
     startIndex + itemsPerPage
   );
 
-  const handleSearch = useCallback((term: string) => {
-    setSearchTerm(term);
-    setCurrentPage(1);
-  }, []);
-
   const handleSortChange = useCallback((order: string) => {
     setSortOrder(order);
     setCurrentPage(1);
@@ -74,7 +68,6 @@ export const useAnnouncements = () => {
     selectedAnnouncements,
     handleItemClick,
     setCurrentPage,
-    handleSearch,
     handleSortChange,
     handleShowNoticesOnlyChange,
   };

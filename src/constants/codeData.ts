@@ -4,7 +4,7 @@ export const codes: CodeType[] = [
   {
     id: 1,
     title: "Python 기초 예제",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "python",
     description:
       "Python의 기본 함수 정의와 문자열 포맷팅을 익히는 예제입니다. print 함수와 f-string을 사용한 출력 방법을 학습합니다.",
@@ -23,7 +23,7 @@ print(f"이름: {name}")`,
   {
     id: 2,
     title: "리스트 컴프리헨션",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "python",
     description:
       "Python의 강력한 기능인 리스트 컴프리헨션을 활용하여 간결하고 효율적인 코드를 작성하는 방법을 학습합니다. 조건부 필터링과 중첩 컴프리헨션을 포함합니다.",
@@ -43,7 +43,7 @@ print(f"구구단 표: {matrix}")`,
   {
     id: 3,
     title: "클래스와 객체",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "python",
     description:
       "객체지향 프로그래밍의 기초인 클래스 정의와 객체 생성을 학습합니다. 생성자, 메서드, 인스턴스 변수의 사용법을 익힙니다.",
@@ -71,7 +71,7 @@ print(student1.get_info())`,
   {
     id: 4,
     title: "파일 처리",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "python",
     description:
       "JSON 형식의 데이터를 파일로 저장하고 읽어오는 방법을 학습합니다. 한글 인코딩 처리와 예외 처리를 포함한 안전한 파일 조작을 익힙니다.",
@@ -101,7 +101,7 @@ with open('student_data.json', 'r', encoding='utf-8') as f:
   {
     id: 5,
     title: "웹 스크래핑",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "python",
     description:
       "requests와 BeautifulSoup을 사용하여 웹페이지에서 데이터를 추출하는 웹 스크래핑 기술을 학습합니다. 예외 처리를 통한 안정적인 크롤링 방법을 익힙니다.",
@@ -137,7 +137,7 @@ get_weather_info(url)`,
   {
     id: 6,
     title: "React 컴포넌트",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "javascript",
     description:
       "React의 함수형 컴포넌트와 Hook을 활용한 상태 관리 방법을 학습합니다. useState를 사용한 동적 데이터 처리와 이벤트 핸들링을 익힙니다.",
@@ -199,7 +199,7 @@ export default StudentProfile;`,
   {
     id: 7,
     title: "비동기 처리",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "javascript",
     description:
       "JavaScript의 Promise와 async/await를 활용한 비동기 프로그래밍을 학습합니다. 에러 핸들링과 함께 실용적인 비동기 데이터 처리 방법을 익힙니다.",
@@ -243,7 +243,7 @@ getStudentInfo('1217');`,
   {
     id: 8,
     title: "Express.js 서버",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "javascript",
     description:
       "Node.js Express 프레임워크를 사용하여 RESTful API 서버를 구축하는 방법을 학습합니다. 미들웨어 설정, 라우팅, CORS 처리를 포함합니다.",
@@ -297,7 +297,7 @@ app.listen(PORT, () => {
   {
     id: 9,
     title: "SQL 학생 데이터 조회",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "sql",
     description:
       "복합 조건과 JOIN을 활용한 SQL 데이터 조회를 학습합니다. GROUP BY와 집계 함수를 사용하여 의미 있는 데이터 분석을 수행합니다.",
@@ -327,7 +327,7 @@ ORDER BY
   {
     id: 10,
     title: "SQL 성적 분석",
-    student: "1217채근영",
+    student: "chaeyn",
     language: "sql",
     description:
       "CTE(Common Table Expression)와 윈도우 함수를 활용한 고급 SQL 쿼리를 학습합니다. 성적 데이터의 통계 분석과 순위 계산을 포함합니다.",

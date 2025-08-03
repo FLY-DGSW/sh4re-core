@@ -3,8 +3,11 @@ import ChapterList from "@/components/common/assignment/chapter/list";
 import * as S from "./style";
 import Pagination from "@/components/ui/pagination";
 import { useAssignments } from "@/hooks/assignment/useAssignments";
+import { useState } from "react";
 
 const AssignmentPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const {
     openChapterId,
     openAssignmentId,
@@ -14,11 +17,14 @@ const AssignmentPage = () => {
     selectedChapters,
     handleChapterClick,
     handleAssignmentClick,
-    handleSearch,
     handleSortChange,
     memoizedCalculateProgress,
     setCurrentPage,
-  } = useAssignments();
+  } = useAssignments(searchTerm);
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <S.Container>
@@ -26,7 +32,8 @@ const AssignmentPage = () => {
         <AssignmentHeader
           sortOrder={sortOrder}
           handleSortChange={handleSortChange}
-          handleSearch={handleSearch}
+          searchTerm={searchTerm}
+          handleSearchChange={handleSearchChange}
         />
         <ChapterList
           chapters={selectedChapters}

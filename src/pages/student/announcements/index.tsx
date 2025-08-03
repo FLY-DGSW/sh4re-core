@@ -3,8 +3,11 @@ import AnnouncementsList from "@/components/common/announcements/list";
 import * as S from "./style";
 import Pagination from "@/components/ui/pagination";
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements";
+import { useState } from "react";
 
 const AnnouncementsPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const {
     openItemId,
     currentPage,
@@ -14,10 +17,13 @@ const AnnouncementsPage = () => {
     selectedAnnouncements,
     handleItemClick,
     setCurrentPage,
-    handleSearch,
     handleSortChange,
     handleShowNoticesOnlyChange,
-  } = useAnnouncements();
+  } = useAnnouncements(searchTerm);
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <S.Container>
@@ -26,7 +32,8 @@ const AnnouncementsPage = () => {
           sortOrder={sortOrder}
           showNoticesOnly={showNoticesOnly}
           handleSortChange={handleSortChange}
-          handleSearch={handleSearch}
+          searchTerm={searchTerm}
+          handleSearchChange={handleSearchChange}
           handleShowNoticesOnlyChange={handleShowNoticesOnlyChange}
         />
         <AnnouncementsList 

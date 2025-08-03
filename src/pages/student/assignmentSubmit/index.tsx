@@ -22,7 +22,7 @@ const AssignmentSubmitPage = () => {
   const isSubmitted = assignment.label === "제출됨";
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/assignments");
   };
 
   return (

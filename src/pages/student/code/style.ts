@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
+import { typography } from "@/styles/typography";
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 1.5rem;
+  padding: 2rem 3rem;
   background-color: ${({ theme }) => theme.colors.background.secondary};
+`;
+
+export const PageTitle = styled.h1`
+  ${typography.heading1}
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.text.primary};
+  margin-top: 0.5rem;
 `;
 
 export const Header = styled.div`

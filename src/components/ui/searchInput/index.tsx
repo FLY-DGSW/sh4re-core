@@ -1,4 +1,3 @@
-import { IoIosSearch } from "react-icons/io";
 import * as S from "./style";
 
 interface SearchInputProps {
@@ -20,7 +19,7 @@ const SearchInput = ({
     <S.SearchContainer>
       <S.SearchIcon />
       <S.SearchInput
-        type="text"
+        type='text'
         placeholder={placeholder}
         value={value}
         onChange={handleInputChange}

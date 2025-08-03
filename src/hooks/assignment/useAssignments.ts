@@ -7,12 +7,11 @@ import {
 } from "@/util/math/assignmentUtils";
 import { Assignment } from "@/types/assignment/assignment";
 
-export const useAssignments = () => {
+export const useAssignments = (searchTerm: string) => {
   const navigate = useNavigate();
   const [openChapterId, setOpenChapterId] = useState<number | null>(null);
   const [openAssignmentId, setOpenAssignmentId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("date");
   const itemPerPage = 5;
 
@@ -37,11 +36,6 @@ export const useAssignments = () => {
     startIndex + itemPerPage
   );
 
-  const handleSearch = useCallback((term: string) => {
-    setSearchTerm(term);
-    setCurrentPage(1);
-  }, []);
-
   const handleSortChange = useCallback((order: string) => {
     setSortOrder(order);
     setCurrentPage(1);
@@ -53,14 +47,12 @@ export const useAssignments = () => {
     openChapterId,
     openAssignmentId,
     currentPage,
-    searchTerm,
     sortOrder,
     totalPages,
     selectedChapters,
     processedChapters,
     handleChapterClick,
     handleAssignmentClick,
-    handleSearch,
     handleSortChange,
     memoizedCalculateProgress,
     setCurrentPage,

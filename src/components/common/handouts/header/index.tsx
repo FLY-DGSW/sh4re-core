@@ -11,7 +11,8 @@ const sortOptions = [
 const HandoutsHeader = ({
   sortOrder,
   handleSortChange,
-  handleSearch,
+  searchTerm,
+  handleSearchChange,
 }: HandoutsHeaderProps) => {
   return (
     <S.PageHeader>
@@ -22,7 +23,11 @@ const HandoutsHeader = ({
           value={sortOrder}
           onChange={handleSortChange}
         />
-        <SearchInput onSearch={handleSearch} placeholder='자료 찾기' />
+        <SearchInput
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder='자료 찾기'
+        />
       </S.HeaderActions>
     </S.PageHeader>
   );

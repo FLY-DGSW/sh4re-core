@@ -1,9 +1,8 @@
 import { useState, useMemo, useCallback } from "react";
 import { handouts } from "@/constants/handoutData";
 
-export const useHandouts = () => {
+export const useHandouts = (searchTerm: string) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("date");
   const itemsPerPage = 12;
 
@@ -33,11 +32,6 @@ export const useHandouts = () => {
     startIndex + itemsPerPage
   );
 
-  const handleSearch = useCallback((term: string) => {
-    setSearchTerm(term);
-    setCurrentPage(1);
-  }, []);
-
   const handleSortChange = useCallback((order: string) => {
     setSortOrder(order);
     setCurrentPage(1);
@@ -48,7 +42,6 @@ export const useHandouts = () => {
     sortOrder,
     totalPages,
     selectedHandouts,
-    handleSearch,
     handleSortChange,
     setCurrentPage,
   };

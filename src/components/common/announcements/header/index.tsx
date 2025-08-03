@@ -12,7 +12,8 @@ const AnnouncementsHeader = ({
   sortOrder,
   showNoticesOnly,
   handleSortChange,
-  handleSearch,
+  searchTerm,
+  handleSearchChange,
   handleShowNoticesOnlyChange,
 }: AnnouncementsHeaderProps) => {
   return (
@@ -33,7 +34,11 @@ const AnnouncementsHeader = ({
           value={sortOrder}
           onChange={handleSortChange}
         />
-        <SearchInput onSearch={handleSearch} placeholder='공지 찾기' />
+        <SearchInput
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder='공지 찾기'
+        />
       </S.HeaderActions>
     </S.PageHeader>
   );

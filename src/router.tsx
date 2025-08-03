@@ -10,6 +10,7 @@ import HomePage from "@/pages/common/home/index";
 import AnnouncementsDetailPage from "@/pages/student/announcementDetail/index";
 import CodePage from "@/pages/student/code";
 import CodeDetailPage from "@/pages/student/codeDetail";
+import ProfilePage from "@/pages/student/profile";
 import ScrollToTop from "@/util/ScrollToTop";
 
 const Router = () => {
@@ -34,6 +35,7 @@ const Router = () => {
             <Route path='/handouts' element={<HandoutsPage />} />
             <Route path='/code' element={<CodePage />} />
             <Route path='/code/:codeId' element={<CodeDetailPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
           </Route>
         </Route>
       </Routes>

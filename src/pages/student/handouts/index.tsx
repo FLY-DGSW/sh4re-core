@@ -3,17 +3,23 @@ import HandoutsList from "@/components/common/handouts/list";
 import * as S from "./style";
 import Pagination from "@/components/ui/pagination";
 import { useHandouts } from "@/hooks/handouts/useHandouts";
+import { useState } from "react";
 
 const HandoutsPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const {
     currentPage,
     sortOrder,
     totalPages,
     selectedHandouts,
-    handleSearch,
     handleSortChange,
     setCurrentPage,
-  } = useHandouts();
+  } = useHandouts(searchTerm);
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+  };
 
   return (
     <S.Container>
@@ -21,7 +27,8 @@ const HandoutsPage = () => {
         <HandoutsHeader 
           sortOrder={sortOrder}
           handleSortChange={handleSortChange}
-          handleSearch={handleSearch}
+          searchTerm={searchTerm}
+          handleSearchChange={handleSearchChange}
         />
         <HandoutsList handouts={selectedHandouts} />
         <Pagination

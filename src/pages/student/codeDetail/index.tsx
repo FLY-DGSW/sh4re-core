@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { FiMaximize, FiMinimize, FiZoomIn, FiZoomOut } from "react-icons/fi";
 import CodeBlock from "@/components/ui/codeblock";
 import CodeDetails from "@/components/common/CodeDetails";
@@ -11,6 +11,7 @@ import * as S from "./style";
 const CodeDetailPage = () => {
   const { codeId } = useParams<{ codeId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [fontSize, setFontSize] = useState(1);
 
@@ -43,7 +44,11 @@ const CodeDetailPage = () => {
     setFontSize((size) => Math.max(size - 0.3, 0.5));
 
   const handleGoBack = () => {
-    navigate(-1);
+    if (location.state?.fromProfile) {
+      navigate("/profile");
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
@@ -70,7 +75,9 @@ const CodeDetailPage = () => {
         </S.FullScreenCodeContainer>
       ) : (
         <>
-          <BackButton onClick={handleGoBack}>코드 전체보기</BackButton>
+          <BackButton onClick={handleGoBack}>
+            {location.state?.fromProfile ? "프로필로 돌아가기" : "코드 전체보기"}
+          </BackButton>
           <S.MainContent>
             <S.CodeContainer>
               <CodeBlock

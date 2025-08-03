@@ -21,7 +21,8 @@ export interface AssignmentLabelProps {
 export interface AssignmentHeaderProps {
   sortOrder: string;
   handleSortChange: (order: string) => void;
-  handleSearch: (term: string) => void;
+  searchTerm: string;
+  handleSearchChange: (term: string) => void;
 }
 
 export interface ChapterListProps {
