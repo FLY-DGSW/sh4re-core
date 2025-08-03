@@ -23,18 +23,6 @@ export const Header = styled.div`
   width: 100%;
 `;
 
-export const BackButton = styled.button`
-  display: flex;
-  align-items: center;
-  ${typography.body1}
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.text.primary};
-  border: none;
-  gap: 0.5rem;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-`;
-
 export const Content = styled.div`
   display: flex;
   gap: 1.5rem;

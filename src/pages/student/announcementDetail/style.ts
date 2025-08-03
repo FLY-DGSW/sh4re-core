@@ -15,6 +15,7 @@ export const MainContent = styled.div`
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   height: 100%;
+  margin-top: 1rem;
 `;
 
 export const Header = styled.div`

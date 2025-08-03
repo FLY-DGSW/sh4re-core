@@ -1,44 +1,30 @@
-import { useState, useEffect } from "react";
+import { IoIosSearch } from "react-icons/io";
 import * as S from "./style";
 
 interface SearchInputProps {
-  onSearch: (searchTerm: string) => void;
+  value: string;
+  onChange: (value: string) => void;
   placeholder?: string;
 }
 
 const SearchInput = ({
-  onSearch,
+  value,
+  onChange,
   placeholder = "검색어를 입력하세요",
 }: SearchInputProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      onSearch(searchTerm);
-    }, 500);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchTerm, onSearch]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSearchClick = () => {
-    onSearch(searchTerm);
+    onChange(e.target.value);
   };
 
   return (
     <S.SearchContainer>
+      <S.SearchIcon />
       <S.SearchInput
         type="text"
         placeholder={placeholder}
-        value={searchTerm}
+        value={value}
         onChange={handleInputChange}
       />
-      <S.SearchButton onClick={handleSearchClick}>검색</S.SearchButton>
     </S.SearchContainer>
   );
 };

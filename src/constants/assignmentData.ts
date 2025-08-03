@@ -16,7 +16,7 @@ export const chapters: Chapter[] = [
       },
       {
         id: 2,
-        label: "제출됨",
+        label: "누락됨",
         title: "useState와 useEffect를 활용한 상태 관리",
         date: "2025.07.28",
         author: "이지은",
@@ -24,7 +24,7 @@ export const chapters: Chapter[] = [
       },
       {
         id: 3,
-        label: "할당됨",
+        label: "제출됨",
         title: "컴포넌트 생명주기와 useEffect 심화",
         date: "2025.08.03",
         author: "박민수",

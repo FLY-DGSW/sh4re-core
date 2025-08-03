@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./style";
-import { IoMdArrowBack } from "react-icons/io";
+import BackButton from "@/components/ui/backButton";
 import AssignmentInfo from "@/components/common/assignment/submit/info";
 import SubmitForm from "@/components/common/assignment/submit/form";
 import SubmittedInfo from "@/components/common/assignment/submit/submitted";
@@ -21,14 +21,15 @@ const AssignmentSubmitPage = () => {
 
   const isSubmitted = assignment.label === "제출됨";
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <S.Container>
       <S.PageLayout>
         <S.Header>
-          <S.BackButton onClick={() => navigate("/assignments")}>
-            <IoMdArrowBack />
-            과제 목록
-          </S.BackButton>
+          <BackButton onClick={handleGoBack}>과제 목록</BackButton>
         </S.Header>
         <S.Content>
           <AssignmentInfo assignment={assignment} isSubmitted={isSubmitted} />

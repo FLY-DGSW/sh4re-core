@@ -23,7 +23,7 @@ export const Textarea = styled.textarea`
   ${typography.body1}
   padding: 0.75rem;
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.background.primary};
   color: ${({ theme }) => theme.colors.text.primary};
   min-height: 120px;
@@ -45,7 +45,7 @@ export const FileUploadButton = styled.label<{ disabled?: boolean }>`
   ${typography.body1}
   padding: 0.75rem 1.5rem;
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: ${({ theme, disabled }) =>
     disabled
       ? theme.colors.background.secondary
@@ -73,7 +73,7 @@ export const SubmitButton = styled.button`
   ${typography.body1}
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.primary.blue};
   color: white;
   cursor: pointer;
