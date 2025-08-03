@@ -9,9 +9,9 @@ export const ProgressBarContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-export const ProgressBarFill = styled.div<{ progress: number }>`
+export const ProgressBarFill = styled.div<{ $progress: number }>`
   height: 100%;
-  width: ${({ progress }) => progress}%;
+  width: ${({ $progress }) => $progress}%;
   background-color: ${({ theme }) => theme.colors.primary.blue};
   border-radius: 5px;
   transition: width 0.5s ease-in-out;

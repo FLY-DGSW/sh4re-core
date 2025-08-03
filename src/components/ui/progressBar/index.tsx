@@ -8,7 +8,7 @@ interface ProgressBarProps {
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
   return (
     <S.ProgressBarContainer>
-      <S.ProgressBarFill progress={progress} />
+      <S.ProgressBarFill $progress={progress} />
     </S.ProgressBarContainer>
   );
 };
