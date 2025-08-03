@@ -175,7 +175,9 @@ export const FileUploadButton = styled.label<{ disabled?: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 6px;
   background-color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.background.secondary : theme.colors.background.primary};
+    disabled
+      ? theme.colors.background.secondary
+      : theme.colors.background.primary};
   color: ${({ theme, disabled }) =>
     disabled ? theme.colors.text.secondary : theme.colors.text.primary};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
