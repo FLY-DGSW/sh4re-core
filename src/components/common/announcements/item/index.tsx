@@ -1,12 +1,21 @@
-import { AnnouncementItemProps } from "@/types/announcement/announcement";
+import { AnnouncementsItemProps } from "@/types/announcements/announcements";
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
-const AnnouncementItem = ({
+const AnnouncementsItem = ({
   announcement,
   isOpen = false,
   onClick = () => {},
   className,
-}: AnnouncementItemProps) => {
+}: AnnouncementsItemProps) => {
+  const navigate = useNavigate();
+
+  const handleContentClick = () => {
+    if (isOpen) {
+      navigate(`/announcements/${announcement.id}`);
+    }
+  };
+
   return (
     <S.Wrapper className={className}>
       <S.Item onClick={onClick}>
@@ -19,9 +28,11 @@ const AnnouncementItem = ({
           <S.ChevronIcon $isOpen={isOpen}>▼</S.ChevronIcon>
         </S.Meta>
       </S.Item>
-      <S.Content $isOpen={isOpen}>{announcement.content}</S.Content>
+      <S.Content $isOpen={isOpen} onClick={handleContentClick}>
+        {announcement.content}
+      </S.Content>
     </S.Wrapper>
   );
 };
 
-export default AnnouncementItem;
+export default AnnouncementsItem;

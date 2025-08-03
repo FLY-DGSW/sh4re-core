@@ -1,12 +1,12 @@
 import { typography } from "@/styles/typography";
 import styled from "styled-components";
-import AnnouncementItem from "@/components/common/announcement/item";
+import AnnouncementsItem from "@/components/common/announcements/item";
 import AssignmentItem from "@/components/common/assignment/item";
 import HandoutsItem from "@/components/common/handouts/item";
-import { Item as AnnouncementItemDiv } from "@/components/common/announcement/item/style";
+import { Item as AnnouncementItemDiv } from "@/components/common/announcements/item/style";
 import { HandoutItem as HandoutItemDiv } from "@/components/common/handouts/item/style";
 import { AssignmentItem as AssignmentItemDiv } from "@/components/common/assignment/item/style";
-import { ChevronIcon } from "@/components/common/announcement/item/style";
+import { ChevronIcon } from "@/components/common/announcements/item/style";
 import { AssignmentLabel } from "@/components/common/assignment/item/style";
 
 export const Container = styled.div`
@@ -56,7 +56,9 @@ export const HandoutsBox = styled(Box)`
   flex-grow: 1;
 `;
 
-export const StyledAnnouncementItem = styled(AnnouncementItem)`
+export const StyledAnnouncementsItem = styled(AnnouncementsItem)`
+  cursor: pointer;
+
   ${AnnouncementItemDiv} {
     padding: 0.75rem 0.25rem;
     &:hover {
@@ -79,6 +81,8 @@ export const StyledHandoutItem = styled(HandoutsItem)`
 `;
 
 export const StyledAssignmentItem = styled(AssignmentItem)`
+  cursor: pointer;
+
   ${AssignmentItemDiv} {
     padding: 0.75rem 0.25rem;
     &:hover {

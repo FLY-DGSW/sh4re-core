@@ -1,6 +1,6 @@
-import { Announcement } from "@/types/announcement/announcement";
+import { Announcements } from "@/types/announcements/announcements";
 
-export const announcements: Announcement[] = [
+export const announcements: Announcements[] = [
   {
     id: 1,
     label: "과제",

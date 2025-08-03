@@ -1,20 +1,20 @@
 import * as S from "./style";
 import SortDropdown from "@/components/ui/sortDropdown";
 import SearchInput from "@/components/ui/searchInput";
-import { AnnouncementHeaderProps } from "@/types/announcement/announcement";
+import { AnnouncementsHeaderProps } from "@/types/announcements/announcements";
 
 const sortOptions = [
   { value: "date", label: "최신순" },
   { value: "title", label: "가나다순" },
 ];
 
-const AnnouncementHeader = ({
+const AnnouncementsHeader = ({
   sortOrder,
   showNoticesOnly,
   handleSortChange,
   handleSearch,
   handleShowNoticesOnlyChange,
-}: AnnouncementHeaderProps) => {
+}: AnnouncementsHeaderProps) => {
   return (
     <S.PageHeader>
       <S.PageTitle>공지사항</S.PageTitle>
@@ -39,4 +39,4 @@ const AnnouncementHeader = ({
   );
 };
 
-export default AnnouncementHeader;
+export default AnnouncementsHeader;

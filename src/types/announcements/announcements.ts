@@ -1,4 +1,4 @@
-export interface Announcement {
+export interface Announcements {
   id: number;
   label: "과제" | "공지";
   title: string;
@@ -7,11 +7,11 @@ export interface Announcement {
   content?: string;
 }
 
-export interface AnnouncementLabelProps {
+export interface AnnouncementsLabelProps {
   label: "과제" | "공지";
 }
 
-export interface AnnouncementHeaderProps {
+export interface AnnouncementsHeaderProps {
   sortOrder: string;
   showNoticesOnly: boolean;
   handleSortChange: (order: string) => void;
@@ -19,14 +19,14 @@ export interface AnnouncementHeaderProps {
   handleShowNoticesOnlyChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface AnnouncementListProps {
-  announcements: Announcement[];
+export interface AnnouncementsListProps {
+  announcements: Announcements[];
   openItemId: number | null;
   handleItemClick: (id: number) => void;
 }
 
-export interface AnnouncementItemProps {
-  announcement: Announcement;
+export interface AnnouncementsItemProps {
+  announcement: Announcements;
   isOpen?: boolean;
   onClick?: () => void;
   className?: string;

@@ -1,19 +1,22 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./style";
 import { IoMdArrowBack } from "react-icons/io";
-import { Assignment } from "@/types/assignment/assignment";
 import AssignmentInfo from "@/components/common/assignment/submit/info";
 import SubmitForm from "@/components/common/assignment/submit/form";
 import SubmittedInfo from "@/components/common/assignment/submit/submitted";
+import { useAssignment } from "@/hooks/assignment/useAssignment";
 
 const AssignmentSubmitPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { assignmentId } = useParams<{ assignmentId: string }>();
+  const { assignment, isLoading } = useAssignment(Number(assignmentId));
 
-  const assignment: Assignment | undefined = location.state?.assignment;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!assignment) {
-    return null;
+    return <div>과제를 찾을 수 없습니다.</div>;
   }
 
   const isSubmitted = assignment.label === "제출됨";

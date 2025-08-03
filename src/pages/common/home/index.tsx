@@ -1,9 +1,9 @@
 import * as S from "./style";
 import { chapters as assignmentData } from "@/constants/assignmentData";
-import { announcements } from "@/constants/announcementData";
+import { announcements } from "@/constants/announcementsData";
 import { handouts } from "@/constants/handoutData";
 import AssignmentIcon from "@/assets/sidebar/assignment.svg?url";
-import AnnouncementIcon from "@/assets/sidebar/announcement.svg?url";
+import AnnouncementsIcon from "@/assets/sidebar/announcements.svg?url";
 import HandoutsIcon from "@/assets/sidebar/handouts.svg?url";
 import { IoMdArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,11 @@ const HomePage = () => {
             </S.Header>
             <S.List>
               {assignedAssignments.map((item) => (
-                <S.StyledAssignmentItem key={item.id} assignment={item} />
+                <S.StyledAssignmentItem
+                  key={item.id}
+                  assignment={item}
+                  onClick={() => navigate(`/assignments/${item.id}`)}
+                />
               ))}
             </S.List>
           </S.Box>
@@ -39,7 +43,7 @@ const HomePage = () => {
           <S.AnnouncementsBox>
             <S.Header>
               <S.Title>
-                <img src={AnnouncementIcon} alt='공지사항 아이콘' />
+                <img src={AnnouncementsIcon} alt='공지사항 아이콘' />
                 공지사항
               </S.Title>
               <S.MoreLink onClick={() => navigate("/announcements")}>
@@ -48,7 +52,11 @@ const HomePage = () => {
             </S.Header>
             <S.NonScrollableList>
               {announcements.slice(0, 3).map((item) => (
-                <S.StyledAnnouncementItem key={item.id} announcement={item} />
+                <S.StyledAnnouncementsItem
+                  key={item.id}
+                  announcement={item}
+                  onClick={() => navigate(`/announcements/${item.id}`)}
+                />
               ))}
             </S.NonScrollableList>
           </S.AnnouncementsBox>

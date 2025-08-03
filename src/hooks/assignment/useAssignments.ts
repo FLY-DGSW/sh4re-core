@@ -22,7 +22,7 @@ export const useAssignments = () => {
   };
 
   const handleAssignmentClick = (assignment: Assignment) => {
-    navigate(`/assignments/${assignment.id}`, { state: { assignment } });
+    navigate(`/assignments/${assignment.id}`);
   };
 
   const processedChapters = useMemo(
@@ -57,7 +57,7 @@ export const useAssignments = () => {
     sortOrder,
     totalPages,
     selectedChapters,
-    processedChapters, // 전체 챕터 목록 추가
+    processedChapters,
     handleChapterClick,
     handleAssignmentClick,
     handleSearch,

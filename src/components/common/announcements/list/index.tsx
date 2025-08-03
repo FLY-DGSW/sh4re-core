@@ -1,16 +1,16 @@
-import { AnnouncementListProps } from "@/types/announcement/announcement";
-import AnnouncementItem from "../item";
+import { AnnouncementsListProps } from "@/types/announcements/announcements";
+import AnnouncementsItem from "../item";
 import * as S from "./style";
 
-const AnnouncementList = ({
+const AnnouncementsList = ({
   announcements,
   openItemId,
   handleItemClick,
-}: AnnouncementListProps) => {
+}: AnnouncementsListProps) => {
   return (
     <S.List>
       {announcements.map((announcement) => (
-        <AnnouncementItem
+        <AnnouncementsItem
           key={announcement.id}
           announcement={announcement}
           isOpen={openItemId === announcement.id}
@@ -21,4 +21,4 @@ const AnnouncementList = ({
   );
 };
 
-export default AnnouncementList;
+export default AnnouncementsList;

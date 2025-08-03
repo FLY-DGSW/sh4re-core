@@ -1,10 +1,10 @@
-import AnnouncementHeader from "@/components/common/announcement/header";
-import AnnouncementList from "@/components/common/announcement/list";
+import AnnouncementsHeader from "@/components/common/announcements/header";
+import AnnouncementsList from "@/components/common/announcements/list";
 import * as S from "./style";
 import Pagination from "@/components/ui/pagination";
-import { useAnnouncements } from "@/hooks/announcement/useAnnouncements";
+import { useAnnouncements } from "@/hooks/announcements/useAnnouncements";
 
-const AnnouncementPage = () => {
+const AnnouncementsPage = () => {
   const {
     openItemId,
     currentPage,
@@ -22,14 +22,14 @@ const AnnouncementPage = () => {
   return (
     <S.Container>
       <S.MainContent>
-        <AnnouncementHeader 
+        <AnnouncementsHeader 
           sortOrder={sortOrder}
           showNoticesOnly={showNoticesOnly}
           handleSortChange={handleSortChange}
           handleSearch={handleSearch}
           handleShowNoticesOnlyChange={handleShowNoticesOnlyChange}
         />
-        <AnnouncementList 
+        <AnnouncementsList 
           announcements={selectedAnnouncements}
           openItemId={openItemId}
           handleItemClick={handleItemClick}
@@ -44,4 +44,4 @@ const AnnouncementPage = () => {
   );
 };
 
-export default AnnouncementPage;
+export default AnnouncementsPage;

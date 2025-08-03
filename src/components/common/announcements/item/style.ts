@@ -1,5 +1,5 @@
 import { typography } from "@/styles/typography";
-import { AnnouncementLabelProps } from "@/types/announcement/announcement";
+import { AnnouncementsLabelProps } from "@/types/announcements/announcements";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -13,7 +13,7 @@ export const Item = styled.div`
   cursor: pointer;
 `;
 
-export const Label = styled.span<AnnouncementLabelProps>`
+export const Label = styled.span<AnnouncementsLabelProps>`
   ${typography.subHeading2}
   font-size: 1rem;
   color: ${({ label, theme }) =>
@@ -62,4 +62,5 @@ export const Content = styled.div<{ $isOpen: boolean }>`
   white-space: pre-wrap;
   transition: max-height 0.3s ease, padding 0.3s ease,
     visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  cursor: ${({ $isOpen }) => ($isOpen ? "pointer" : "default")};
 `;

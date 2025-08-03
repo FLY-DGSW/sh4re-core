@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import { announcements } from "@/constants/announcementData";
+import { announcements } from "@/constants/announcementsData";
 
 export const useAnnouncements = () => {
   const [openItemId, setOpenItemId] = useState<number | null>(null);
