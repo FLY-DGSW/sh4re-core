@@ -1,6 +1,6 @@
-import { HandoutProps } from "@/types/handouts/handouts";
+import { Handout } from "@/types/handouts/handouts";
 
-export const handouts: HandoutProps[] = [
+export const handouts: Handout[] = [
   {
     id: 1,
     extension: "PPTX",

@@ -1,6 +1,6 @@
-import { AnnouncementProps } from "@/types/announcement/announcement";
+import { Announcement } from "@/types/announcement/announcement";
 
-export const announcements: AnnouncementProps[] = [
+export const announcements: Announcement[] = [
   {
     id: 1,
     label: "과제",

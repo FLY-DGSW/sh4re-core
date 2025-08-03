@@ -1,6 +1,6 @@
-import { ChapterProps } from "@/types/assignment/assignment";
+import { Chapter } from "@/types/assignment/assignment";
 
-export const chapters: ChapterProps[] = [
+export const chapters: Chapter[] = [
   {
     id: 1,
     title: "React 기초",

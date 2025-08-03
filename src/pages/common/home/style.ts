@@ -1,8 +1,13 @@
 import { typography } from "@/styles/typography";
 import styled from "styled-components";
-import { AnnouncementItem } from "../student/announcement/style";
-import { HandoutItem } from "../student/handouts/style";
-import { AssignmentLabel } from "../student/assignment/style";
+import AnnouncementItem from "@/components/common/announcement/item";
+import AssignmentItem from "@/components/common/assignment/item";
+import HandoutsItem from "@/components/common/handouts/item";
+import { Item as AnnouncementItemDiv } from "@/components/common/announcement/item/style";
+import { HandoutItem as HandoutItemDiv } from "@/components/common/handouts/item/style";
+import { AssignmentItem as AssignmentItemDiv } from "@/components/common/assignment/item/style";
+import { ChevronIcon } from "@/components/common/announcement/item/style";
+import { AssignmentLabel } from "@/components/common/assignment/item/style";
 
 export const Container = styled.div`
   padding: 2rem 3rem;
@@ -13,7 +18,7 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const PageLayout = styled.div`
+export const Layout = styled.div`
   display: flex;
   gap: 1.5rem;
   flex-grow: 1;
@@ -32,7 +37,7 @@ export const RightColumn = styled.div`
   gap: 1.5rem;
 `;
 
-export const Section = styled.section`
+export const Box = styled.section`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.colors.border};
@@ -43,41 +48,56 @@ export const Section = styled.section`
   overflow: hidden;
 `;
 
-export const AnnouncementSection = styled(Section)`
+export const AnnouncementsBox = styled(Box)`
   flex-shrink: 0;
 `;
 
-export const HandoutSection = styled(Section)`
+export const HandoutsBox = styled(Box)`
   flex-grow: 1;
 `;
 
-export const HomeAnnouncementItem = styled(AnnouncementItem)`
-  padding: 0.75rem 0.25rem;
+export const StyledAnnouncementItem = styled(AnnouncementItem)`
+  ${AnnouncementItemDiv} {
+    padding: 0.75rem 0.25rem;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  ${ChevronIcon} {
+    display: none;
+  }
 `;
 
-export const HomeHandoutItem = styled(HandoutItem)`
-  padding: 0.75rem 0.25rem;
+export const StyledHandoutItem = styled(HandoutsItem)`
+  ${HandoutItemDiv} {
+    padding: 0.75rem 0.25rem;
+    &:hover {
+      background-color: transparent;
+    }
+  }
 `;
 
-export const HomeAssignmentItem = styled.div`
-  display: flex;
-  padding: 0.75rem 0.25rem;
-  align-items: center;
-  cursor: pointer;
+export const StyledAssignmentItem = styled(AssignmentItem)`
+  ${AssignmentItemDiv} {
+    padding: 0.75rem 0.25rem;
+    &:hover {
+      background-color: transparent;
+    }
+    ${AssignmentLabel} {
+      margin-right: 0;
+    }
+  }
 `;
 
-export const HomeAssignmentLabel = styled(AssignmentLabel)`
-  margin-right: 0;
-`;
-
-export const SectionHeader = styled.div`
+export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
 `;
 
-export const SectionTitle = styled.h2`
+export const Title = styled.h2`
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -86,7 +106,7 @@ export const SectionTitle = styled.h2`
   color: ${({ theme }) => theme.colors.text.primary};
 `;
 
-export const SeeAllLink = styled.a`
+export const MoreLink = styled.a`
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -97,7 +117,7 @@ export const SeeAllLink = styled.a`
   cursor: pointer;
 `;
 
-export const ItemList = styled.ul`
+export const List = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -107,7 +127,7 @@ export const ItemList = styled.ul`
   overflow-y: auto;
 `;
 
-export const NonScrollableItemList = styled(ItemList)`
+export const NonScrollableList = styled(List)`
   overflow-y: hidden;
 `;
 

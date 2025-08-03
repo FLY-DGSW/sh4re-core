@@ -1,6 +1,6 @@
-import { ChapterProps, AssignmentProps } from "@/types/assignment/assignment";
+import { Assignment, Chapter } from "@/types/assignment/assignment";
 
-export const calculateProgress = (assignments: AssignmentProps[]) => {
+export const calculateProgress = (assignments: Assignment[]) => {
   const completedCount = assignments.filter(
     (assignment) => assignment.label === "제출됨"
   ).length;
@@ -16,7 +16,7 @@ export const calculateProgress = (assignments: AssignmentProps[]) => {
 };
 
 export const processChapters = (
-  chapters: ChapterProps[],
+  chapters: Chapter[],
   searchTerm: string,
   sortOrder: string
 ) => {
