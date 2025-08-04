@@ -1,18 +1,31 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
 import { ThemeProvider } from "styled-components";
-import theme from "@/styles/theme";
+import {
+  ThemeProviderCustom,
+  useTheme,
+  themes,
+} from "./styles/theme/themeContext";
 import GlobalStyle from "./styles/GlobalStyle";
 import Toast from "./components/ui/toast/index";
+
+function ThemedApp() {
+  const { theme } = useTheme();
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <GlobalStyle />
+      <Toast />
+      <Router />
+    </ThemeProvider>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Toast />
-        <Router />
-      </ThemeProvider>
+      <ThemeProviderCustom>
+        <ThemedApp />
+      </ThemeProviderCustom>
     </BrowserRouter>
   );
 }

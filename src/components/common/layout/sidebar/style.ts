@@ -55,14 +55,45 @@ export const NavIcon = styled.span`
   font-size: 1.5rem;
 `;
 
+export const ThemeToggle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: ${({ theme }) => theme.colors.text.primary};
+  ${typography.subHeading2}
+  font-size: 1.1rem;
+  cursor: pointer;
+  &:hover {
+    background: ${({ theme }) => theme.colors.background.secondary};
+  }
+`;
+
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
   font-size: 1.25rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  cursor: pointer;
   span {
     ${typography.subHeading1}
     font-size: 1.25rem;
+  }
+`;
+
+export const LogoutButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.button.primary};
+  color: ${({ theme }) => theme.colors.text.button};
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  ${typography.subHeading2}
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  &:hover {
+    opacity: 0.9;
   }
 `;
