@@ -9,6 +9,7 @@ import HandOutsIcon from "@/assets/sidebar/handouts.svg";
 import ProfileIcon from "@/assets/sidebar/profile.svg";
 import SunIcon from "@/assets/sidebar/sun.svg";
 import MoonIcon from "@/assets/sidebar/moon.svg";
+import LogoutIcon from "@/assets/sidebar/logout.svg";
 import { useUser } from "@/hooks/auth/login/useUser";
 import { useTheme } from "@/styles/theme/themeContext";
 import Modal from "@/components/ui/modal";
@@ -81,11 +82,14 @@ const Sidebar = () => {
         </S.UserInfo>
       </S.BottomSection>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <S.ThemeToggle onClick={handleToggleTheme}>
+        <S.ModalButton onClick={handleToggleTheme}>
           {theme === "light" ? <MoonIcon /> : <SunIcon />}
           <span>{theme === "light" ? "다크 모드" : "라이트 모드"}</span>
-        </S.ThemeToggle>
-        <S.LogoutButton onClick={handleLogout}>로그아웃</S.LogoutButton>
+        </S.ModalButton>
+        <S.ModalButton onClick={handleLogout}>
+          <LogoutIcon />
+          <span>로그아웃</span>
+        </S.ModalButton>
       </Modal>
     </S.SidebarContainer>
   );

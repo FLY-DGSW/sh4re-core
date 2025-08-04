@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { lightTheme, darkTheme } from "./theme";
+import sh4reCustomAxios from "@/api/sh4reCustomAxios";
 
 const themes = { dark: darkTheme, light: lightTheme };
 type Theme = keyof typeof themes;
@@ -24,6 +25,9 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
+    sh4reCustomAxios.post("/user/theme", {
+      themeName: theme,
+    });
   }, [theme]);
 
   return (
