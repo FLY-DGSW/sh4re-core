@@ -5,15 +5,16 @@ import styled from "styled-components";
 export const AssignmentInfo = styled.div`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
   overflow-y: auto;
   height: 100%;
   width: 100%;
+  padding: 2rem;
 `;
 
 export const AssignmentHeader = styled.div`
-  padding: 2rem 2.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const StatusBadge = styled.span<AssignmentLabelProps>`
@@ -43,7 +44,6 @@ export const AssignmentMeta = styled.p`
 `;
 
 export const AssignmentContent = styled.div`
-  padding: 2.5rem;
   ${typography.body1}
   color: ${({ theme }) => theme.colors.text.primary};
   line-height: 1.8;

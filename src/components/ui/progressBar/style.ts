@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const ProgressBarContainer = styled.div`
   width: 100%;
   height: 10px;
-  background-color: ${({ theme }) => theme.colors.background.secondary};
+  background-color: ${({ theme }) => theme.colors.background.selected};
   border-radius: 5px;
   overflow: hidden;
-  border: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const ProgressBarFill = styled.div<{ $progress: number }>`

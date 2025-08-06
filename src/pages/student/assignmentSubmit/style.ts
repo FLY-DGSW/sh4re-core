@@ -34,7 +34,6 @@ export const SubmitSection = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 2rem 2.5rem;
   overflow-y: auto;
   display: flex;

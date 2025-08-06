@@ -5,7 +5,6 @@ export const ChapterWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid ${({ theme }) => theme.colors.border};
   transition: box-shadow 0.3s ease-in-out;
 `;
 
@@ -13,7 +12,6 @@ export const ChapterItem = styled.div`
   padding: 1.5rem;
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.background.primary};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
@@ -51,10 +49,9 @@ export const ProgressSection = styled.div`
 export const ProgressBar = styled.div`
   width: 200px;
   height: 8px;
-  background-color: ${({ theme }) => theme.colors.background.secondary};
+  background-color: ${({ theme }) => theme.colors.background.selected};
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const ProgressFill = styled.div<{ $percentage: number }>`

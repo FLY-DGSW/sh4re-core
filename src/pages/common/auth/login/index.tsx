@@ -4,6 +4,8 @@ import useLogin from "@/hooks/auth/login/useLogin";
 import Sh4reLogo from "@/assets/sh4re-logo.svg?url";
 import profileIcon from "@/assets/login/profile.svg?url";
 import passwordIcon from "@/assets/login/password.svg?url";
+import DarkProfileIcon from "@/assets/login/profileDark.svg?url";
+import DarkPasswordIcon from "@/assets/login/passwordDark.svg?url";
 
 interface userInfoData {
   username: string;
@@ -11,6 +13,8 @@ interface userInfoData {
 }
 
 const LoginPage = () => {
+  const theme = localStorage.getItem("theme") || "light";
+
   const { register, handleSubmit } = useForm<userInfoData>();
   const { login } = useLogin();
 
@@ -28,7 +32,10 @@ const LoginPage = () => {
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.InputContainer>
             <S.InputBox>
-              <S.InputIcon src={profileIcon} alt='User Icon' />
+              <S.InputIcon
+                src={theme === "dark" ? DarkProfileIcon : profileIcon}
+                alt='User Icon'
+              />
               <S.Input
                 {...register("username")}
                 type='text'
@@ -36,7 +43,10 @@ const LoginPage = () => {
               />
             </S.InputBox>
             <S.InputBox>
-              <S.InputIcon src={passwordIcon} alt='Lock Icon' />
+              <S.InputIcon
+                src={theme === "dark" ? DarkPasswordIcon : passwordIcon}
+                alt='Lock Icon'
+              />
               <S.Input
                 {...register("password")}
                 type='password'

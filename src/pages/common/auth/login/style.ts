@@ -53,6 +53,7 @@ export const InputBox = styled.label`
   align-items: center;
   position: relative;
   user-select: none;
+  color: ${({ theme }) => theme.colors.placeholder};
   border: 1px solid ${({ theme }) => theme.colors.placeholder};
   box-sizing: border-box;
   border-radius: 10px;
@@ -63,6 +64,7 @@ export const InputIcon = styled.img`
   left: 15px;
   margin-bottom: 3px;
   user-select: none;
+  color: ${({ theme }) => theme.colors.placeholder};
 `;
 
 export const Input = styled.input`
@@ -71,11 +73,13 @@ export const Input = styled.input`
   border-radius: 0.75rem;
   padding: 1rem;
   padding-left: 40px;
+  color: ${({ theme }) => theme.colors.text.primary};
   background-color: ${({ theme }) => theme.colors.background.light};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: none;
+  outline: none;
+  cursor: text;
   &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.primary.blue};
-    outline: 1px solid ${({ theme }) => theme.colors.primary.blue};
+    outline: 2px solid ${({ theme }) => theme.colors.primary.blue};
   }
   &::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
@@ -90,7 +94,7 @@ export const Button = styled.button`
   border-radius: 0.75rem;
   background-color: ${({ theme }) => theme.colors.button.black};
   font-size: 1rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.text.button};
   border: none;
   cursor: pointer;
 `;

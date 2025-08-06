@@ -2,9 +2,9 @@ import * as S from "./style";
 import { chapters as assignmentData } from "@/constants/assignmentData";
 import { announcements } from "@/constants/announcementsData";
 import { handouts } from "@/constants/handoutData";
-import AssignmentIcon from "@/assets/sidebar/assignment.svg?url";
-import AnnouncementsIcon from "@/assets/sidebar/announcements.svg?url";
-import HandoutsIcon from "@/assets/sidebar/handouts.svg?url";
+import AssignmentIcon from "@/assets/sidebar/assignment.svg";
+import AnnouncementsIcon from "@/assets/sidebar/announcements.svg";
+import HandoutsIcon from "@/assets/sidebar/handouts.svg";
 import { IoMdArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const HomePage = () => {
           <S.Box>
             <S.Header>
               <S.Title>
-                <img src={AssignmentIcon} alt='과제 아이콘' />
+                <AssignmentIcon />
                 과제
               </S.Title>
               <S.MoreLink onClick={() => navigate("/assignments")}>
@@ -43,7 +43,7 @@ const HomePage = () => {
           <S.AnnouncementsBox>
             <S.Header>
               <S.Title>
-                <img src={AnnouncementsIcon} alt='공지사항 아이콘' />
+                <AnnouncementsIcon />
                 공지사항
               </S.Title>
               <S.MoreLink onClick={() => navigate("/announcements")}>
@@ -63,7 +63,7 @@ const HomePage = () => {
           <S.HandoutsBox>
             <S.Header>
               <S.Title>
-                <img src={HandoutsIcon} alt='수업 자료 아이콘' />
+                <HandoutsIcon />
                 수업 자료
               </S.Title>
               <S.MoreLink onClick={() => navigate("/handouts")}>

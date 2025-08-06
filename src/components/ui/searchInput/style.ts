@@ -22,4 +22,10 @@ export const SearchInput = styled.input`
   background-color: ${({ theme }) => theme.colors.background.primary};
   color: ${({ theme }) => theme.colors.text.primary};
   border-radius: 4px;
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.primary.blue};
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.placeholder};
+  }
 `;

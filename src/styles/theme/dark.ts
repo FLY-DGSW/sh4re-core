@@ -18,14 +18,14 @@ export const darkTheme: Theme = {
     text: {
       primary: "#FFFFFF",
       secondary: "#959595",
-      button: "#FFFFFF",
+      button: "#2C2C2C",
     },
     button: {
-      primary: "#2C2C2C",
+      primary: "#0095FF",
       black: "#FFFFFF",
       white: "#2C2C2C",
     },
-    placeholder: "rgba(22, 22, 22, 0.5)",
+    placeholder: "rgba(224, 224, 224, 0.8)",
     border: "rgba(224, 224, 224, 0.5)",
   },
   typography,

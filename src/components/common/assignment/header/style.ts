@@ -16,5 +16,5 @@ export const PageTitle = styled.span`
 export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 `;

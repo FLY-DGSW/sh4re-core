@@ -57,7 +57,7 @@ export const UserDetail = styled.p`
   gap: 0.25rem;
   font-size: 1rem;
   ${typography.body2}
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.placeholder};
   margin-bottom: 0.25rem;
 `;
 
@@ -93,6 +93,7 @@ export const MyStatBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 export const StatLabel = styled.p`
@@ -166,7 +167,6 @@ export const CodeInfo = styled.div`
   gap: 10px;
   padding: 10px 20px;
   height: 50px;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const CodeTitle = styled.p`

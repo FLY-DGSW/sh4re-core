@@ -77,7 +77,6 @@ export const CodeInfo = styled.div`
   gap: 10px;
   padding: 10px 20px;
   height: 50px;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
 export const CodeTitle = styled.p`

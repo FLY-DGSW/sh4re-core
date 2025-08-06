@@ -40,7 +40,7 @@ export const RightColumn = styled.div`
 export const Box = styled.section`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   display: flex;
   flex-direction: column;
