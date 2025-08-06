@@ -8,6 +8,7 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 2rem 3rem;
   background-color: ${({ theme }) => theme.colors.background.secondary};
+  overflow: auto;
 `;
 
 export const PageTitle = styled.h1`

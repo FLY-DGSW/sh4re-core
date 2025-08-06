@@ -42,12 +42,12 @@ export const NavItem = styled(Link)<{ $active?: boolean }>`
   color: ${({ theme }) => theme.colors.text.primary};
   ${typography.subHeading2}
   background: ${({ $active, theme }) =>
-    $active ? theme.colors.background.secondary : "none"};
+    $active ? theme.colors.background.selected : "none"};
   font-size: 1.1rem;
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    background: ${({ theme }) => theme.colors.background.secondary};
+    background: ${({ theme }) => theme.colors.background.selected};
   }
 `;
 

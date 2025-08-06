@@ -22,7 +22,7 @@ export const HeaderActions = styled.div`
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.2rem;
   color: ${({ theme }) => theme.colors.text.primary};
   ${typography.body1}
 
