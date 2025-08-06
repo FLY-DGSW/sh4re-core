@@ -31,54 +31,67 @@ const ProfilePage = () => {
   return (
     <S.Container>
       <S.ProfileHeader>
-        <S.UserInfoRow>
-          <S.ProfileImage src={user.profileImage} alt='Profile' />
-          <S.UserInfoText>
-            <S.UserInfo>
-              <S.UserName>{user.name}</S.UserName>
-              <S.UserDetailSecondary>@{user.username}</S.UserDetailSecondary>
-            </S.UserInfo>
-            <S.UserDetail>
-              <SchoolIcon />
-              {user.school}
-            </S.UserDetail>
-            <S.UserDetail style={{ marginLeft: "0.1rem" }}>
-              <EmailIcon />
-              {user.email}
-            </S.UserDetail>
-          </S.UserInfoText>
-        </S.UserInfoRow>
-        <S.StatRow>
-          <S.StatItem>
-            <S.StatBox>
-              <S.StatLabel>과제 수행률</S.StatLabel>
-              <S.StatValue>{user.assignmentCompletion}%</S.StatValue>
-            </S.StatBox>
-            <ProgressBar progress={user.assignmentCompletion} />
-          </S.StatItem>
-        </S.StatRow>
-        <S.MyStatusRow>
-          <S.StatItem>
-            <S.MyStatBox>
-              <Heart />
-              <S.StatLabel>받은 하트 수</S.StatLabel>
-            </S.MyStatBox>
-            <S.StatValue>{totalLikes}개</S.StatValue>
-          </S.StatItem>
-          <S.StatItem>
-            <S.MyStatBox>
-              <Code />
-              <S.StatLabel>올린 코드 수</S.StatLabel>
-            </S.MyStatBox>
-            <S.StatValue>{myCodes.length}개</S.StatValue>
-          </S.StatItem>
-        </S.MyStatusRow>
+        <S.TopSection>
+          <S.UserInfoSection>
+            <S.UserInfoRow>
+              <S.ProfileImage src={user.profileImage} alt='Profile' />
+              <S.UserInfoText>
+                <S.UserInfo>
+                  <S.UserName>{user.name}</S.UserName>
+                  <S.UserDetailSecondary>
+                    @{user.username}
+                  </S.UserDetailSecondary>
+                </S.UserInfo>
+                <S.UserDetail>
+                  <SchoolIcon />
+                  {user.school}
+                </S.UserDetail>
+                <S.UserDetail style={{ marginLeft: "0.1rem" }}>
+                  <EmailIcon />
+                  {user.email}
+                </S.UserDetail>
+              </S.UserInfoText>
+            </S.UserInfoRow>
+          </S.UserInfoSection>
+
+          <S.StatsSection>
+            <S.StatCard>
+              <S.MyStatBox>
+                <Heart />
+                <S.StatLabel>받은 하트 수</S.StatLabel>
+              </S.MyStatBox>
+              <S.StatValue>{totalLikes}개</S.StatValue>
+            </S.StatCard>
+            <S.StatCard>
+              <S.MyStatBox>
+                <Code />
+                <S.StatLabel>올린 코드 수</S.StatLabel>
+              </S.MyStatBox>
+              <S.StatValue>{myCodes.length}개</S.StatValue>
+            </S.StatCard>
+          </S.StatsSection>
+        </S.TopSection>
+
+        <S.AssignmentProgressSection>
+          <S.StatRow>
+            <S.StatItem>
+              <S.StatBox>
+                <S.StatLabel>과제 수행률</S.StatLabel>
+                <S.StatValue>{user.assignmentCompletion}%</S.StatValue>
+              </S.StatBox>
+              <ProgressBar progress={user.assignmentCompletion} />
+            </S.StatItem>
+          </S.StatRow>
+        </S.AssignmentProgressSection>
       </S.ProfileHeader>
       <S.CodeSection>
         <S.SectionTitle>내가 작성한 코드</S.SectionTitle>
         <S.CodeGrid>
           {myCodes.map((code) => (
-            <S.CodeContainer key={code.id} onClick={() => handleCodeClick(code.id)}>
+            <S.CodeContainer
+              key={code.id}
+              onClick={() => handleCodeClick(code.id)}
+            >
               <S.CodeBox>
                 <CodeBlock code={code.code} language={code.language} />
               </S.CodeBox>

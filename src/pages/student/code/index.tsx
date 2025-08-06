@@ -70,8 +70,6 @@ const CodePage = () => {
     <S.Container>
       <S.Header>
         <S.PageTitle>코드</S.PageTitle>
-
-        <div style={{ flexGrow: 1 }} />
         <S.SearchWrapper>
           <SearchInput value={searchTerm} onChange={setSearchTerm} placeholder="코드 검색" />
         </S.SearchWrapper>
@@ -100,7 +98,7 @@ const CodePage = () => {
             onClick={() => handleCodeClick(code.id)}
           >
             <S.CodeBox>
-              <CodeBlock code={code.code} language={code.language} />
+              <CodeBlock code={code.code} language={code.language} noPadding />
             </S.CodeBox>
             <S.CodeInfo>
               <S.CodeTitle>{code.title}</S.CodeTitle>

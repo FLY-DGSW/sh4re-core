@@ -4,9 +4,7 @@ import * as S from "./style";
 
 const ChapterList = ({
   chapters,
-  openChapterId,
   openAssignmentId,
-  handleChapterClick,
   handleAssignmentClick,
   calculateProgress,
 }: ChapterListProps) => {
@@ -16,9 +14,7 @@ const ChapterList = ({
         <ChapterItem
           key={chapter.id}
           chapter={chapter}
-          isOpen={openChapterId === chapter.id}
           openAssignmentId={openAssignmentId}
-          onClick={() => handleChapterClick(chapter.id)}
           handleAssignmentClick={handleAssignmentClick}
           calculateProgress={calculateProgress}
         />

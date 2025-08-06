@@ -23,13 +23,13 @@ export interface AssignmentHeaderProps {
   handleSortChange: (order: string) => void;
   searchTerm: string;
   handleSearchChange: (term: string) => void;
+  showAssignedOnly: boolean;
+  handleShowAssignedOnlyChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ChapterListProps {
   chapters: Chapter[];
-  openChapterId: number | null;
   openAssignmentId: number | null;
-  handleChapterClick: (id: number) => void;
   handleAssignmentClick: (assignment: Assignment) => void;
   calculateProgress: (assignments: Assignment[]) => {
     percentage: number;
@@ -40,9 +40,7 @@ export interface ChapterListProps {
 
 export interface ChapterItemProps {
   chapter: Chapter;
-  isOpen: boolean;
   openAssignmentId: number | null;
-  onClick: () => void;
   handleAssignmentClick: (assignment: Assignment) => void;
   calculateProgress: (assignments: Assignment[]) => {
     percentage: number;

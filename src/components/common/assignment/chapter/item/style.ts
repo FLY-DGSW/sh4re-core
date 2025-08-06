@@ -10,13 +10,8 @@ export const ChapterWrapper = styled.div`
 
 export const ChapterItem = styled.div`
   padding: 1.5rem;
-  cursor: pointer;
   background-color: ${({ theme }) => theme.colors.background.primary};
   transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.background.light};
-  }
 `;
 
 export const ChapterHeader = styled.div`
@@ -89,17 +84,15 @@ export const AssignmentCount = styled.span`
   font-size: 0.875rem;
 `;
 
-export const ChapterContent = styled.div<{ $isOpen: boolean }>`
+export const ChapterContent = styled.div`
   display: grid;
-  grid-template-rows: ${({ $isOpen }) => ($isOpen ? "1fr" : "0fr")};
-  transition: grid-template-rows 0.3s ease-in-out;
+  grid-template-rows: 1fr;
   background-color: ${({ theme }) => theme.colors.background.secondary};
 `;
 
-export const ChevronIcon = styled.span<{ $isOpen: boolean }>`
+export const ChevronIcon = styled.span`
   ${typography.body2}
   color: ${({ theme }) => theme.colors.text.secondary};
-  transition: transform 0.4s ease-in-out;
-  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0deg)")};
+  transform: rotate(180deg);
   font-size: 0.875rem;
 `;

@@ -9,4 +9,11 @@ export const SortSelect = styled.select`
   color: ${({ theme }) => theme.colors.text.primary};
   border-radius: 4px;
   cursor: pointer;
+  min-width: 120px;
+  white-space: nowrap;
+  
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.primary.blue};
+    outline-offset: 1px;
+  }
 `;

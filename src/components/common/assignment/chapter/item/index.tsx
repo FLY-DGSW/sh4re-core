@@ -4,9 +4,7 @@ import * as S from "./style";
 
 const ChapterItem = ({
   chapter,
-  isOpen,
   openAssignmentId,
-  onClick,
   handleAssignmentClick,
   calculateProgress,
 }: ChapterItemProps) => {
@@ -14,7 +12,7 @@ const ChapterItem = ({
 
   return (
     <S.ChapterWrapper>
-      <S.ChapterItem onClick={onClick}>
+      <S.ChapterItem>
         <S.ChapterHeader>
           <S.ChapterTitleSection>
             <S.ChapterTitle>{chapter.title}</S.ChapterTitle>
@@ -29,15 +27,14 @@ const ChapterItem = ({
           </S.ChapterTitleSection>
           <S.ChapterMeta>
             <S.AssignmentCount>
-              과제 {chapter.assignments.length}개
+              과제 총 {chapter.assignments.length}개
             </S.AssignmentCount>
-            <S.ChevronIcon $isOpen={isOpen}>▼</S.ChevronIcon>
           </S.ChapterMeta>
         </S.ChapterHeader>
         <S.ChapterDescription>{chapter.description}</S.ChapterDescription>
       </S.ChapterItem>
 
-      <S.ChapterContent $isOpen={isOpen}>
+      <S.ChapterContent>
         <AssignmentList
           assignments={chapter.assignments}
           openAssignmentId={openAssignmentId}

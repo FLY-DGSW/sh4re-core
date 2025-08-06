@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const AssignmentPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAssignedOnly, setShowAssignedOnly] = useState(false);
 
   const {
     openChapterId,
@@ -26,6 +27,23 @@ const AssignmentPage = () => {
     setSearchTerm(term);
   };
 
+  const handleShowAssignedOnlyChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setShowAssignedOnly(e.target.checked);
+  };
+
+  const filteredChapters = showAssignedOnly
+    ? selectedChapters
+        .map((chapter) => ({
+          ...chapter,
+          assignments: chapter.assignments.filter(
+            (assignment) => assignment.label === "할당됨"
+          ),
+        }))
+        .filter((chapter) => chapter.assignments.length > 0)
+    : selectedChapters;
+
   return (
     <S.Container>
       <S.MainContent>
@@ -34,12 +52,12 @@ const AssignmentPage = () => {
           handleSortChange={handleSortChange}
           searchTerm={searchTerm}
           handleSearchChange={handleSearchChange}
+          showAssignedOnly={showAssignedOnly}
+          handleShowAssignedOnlyChange={handleShowAssignedOnlyChange}
         />
         <ChapterList
-          chapters={selectedChapters}
-          openChapterId={openChapterId}
+          chapters={filteredChapters}
           openAssignmentId={openAssignmentId}
-          handleChapterClick={handleChapterClick}
           handleAssignmentClick={handleAssignmentClick}
           calculateProgress={memoizedCalculateProgress}
         />

@@ -12,48 +12,133 @@ import { AssignmentLabel } from "@/components/common/assignment/item/style";
 export const Container = styled.div`
   padding: 2rem 3rem;
   background-color: ${({ theme }) => theme.colors.background.secondary};
-  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 1024px) {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1023px) {
+    min-height: 100vh;
+  }
+
+  @media (max-width: 1440px) {
+    padding: 2rem 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.75rem;
+  }
 `;
 
 export const Layout = styled.div`
-  display: flex;
+  display: grid;
   gap: 1.5rem;
   flex-grow: 1;
-  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "assignments announcements";
+    min-height: 0;
+  }
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 `;
 
 export const LeftColumn = styled.div`
   display: flex;
-  width: 50%;
+
+  @media (min-width: 1024px) {
+    grid-area: assignments;
+    height: 100%;
+  }
+
+  @media (max-width: 1023px) {
+    grid-row: 1;
+  }
 `;
 
 export const RightColumn = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    grid-area: announcements;
+    height: 100%;
+    min-height: 0;
+  }
+
+  @media (max-width: 1023px) {
+    display: contents;
+  }
 `;
 
 export const Box = styled.section`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: 4px;
-
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
+  min-height: 0;
+
+  @media (max-width: 1024px) {
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.875rem 0.875rem 0.5rem 0.875rem;
+    border-radius: 8px;
+  }
 `;
 
 export const AnnouncementsBox = styled(Box)`
   flex-shrink: 0;
+
+  @media (min-width: 1024px) {
+    height: 230px;
+  }
+
+  @media (max-width: 1023px) {
+    grid-row: 2;
+  }
 `;
 
 export const HandoutsBox = styled(Box)`
-  flex-grow: 1;
+  @media (min-width: 1024px) {
+    flex-grow: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1023px) {
+    grid-row: 3;
+  }
 `;
 
 export const StyledAnnouncementsItem = styled(AnnouncementsItem)`
@@ -61,8 +146,19 @@ export const StyledAnnouncementsItem = styled(AnnouncementsItem)`
 
   ${AnnouncementItemDiv} {
     padding: 0.75rem 0.25rem;
+
+    @media (max-width: 768px) {
+      padding: 0.625rem 0.125rem;
+    }
+
     &:hover {
       background-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      &:active {
+        background-color: ${({ theme }) => theme.colors.background.selected};
+      }
     }
   }
 
@@ -74,8 +170,19 @@ export const StyledAnnouncementsItem = styled(AnnouncementsItem)`
 export const StyledHandoutItem = styled(HandoutsItem)`
   ${HandoutItemDiv} {
     padding: 0.75rem 0.25rem;
+
+    @media (max-width: 768px) {
+      padding: 0.625rem 0.125rem;
+    }
+
     &:hover {
       background-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      &:active {
+        background-color: ${({ theme }) => theme.colors.background.selected};
+      }
     }
   }
 `;
@@ -85,11 +192,28 @@ export const StyledAssignmentItem = styled(AssignmentItem)`
 
   ${AssignmentItemDiv} {
     padding: 0.75rem 0.25rem;
+
+    @media (max-width: 768px) {
+      padding: 0.625rem 0.125rem;
+    }
+
     &:hover {
       background-color: transparent;
     }
+
+    @media (max-width: 768px) {
+      &:active {
+        background-color: ${({ theme }) => theme.colors.background.selected};
+      }
+    }
+
     ${AssignmentLabel} {
       margin-right: 0;
+
+      @media (max-width: 480px) {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+      }
     }
   }
 `;
@@ -99,6 +223,18 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 `;
 
 export const Title = styled.h2`
@@ -106,8 +242,29 @@ export const Title = styled.h2`
   align-items: center;
   gap: 0.75rem;
   ${typography.heading3}
-  font-size: 1.25rem;
   color: ${({ theme }) => theme.colors.text.primary};
+  margin: 0;
+
+  @media (min-width: 1024px) {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    gap: 0.5rem;
+  }
+
+  svg {
+    @media (max-width: 768px) {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
 `;
 
 export const MoreLink = styled.a`
@@ -115,10 +272,22 @@ export const MoreLink = styled.a`
   align-items: center;
   gap: 0.2rem;
   ${typography.body2}
-  font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.placeholder};
   text-decoration: none;
   cursor: pointer;
+  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    align-self: flex-end;
+  }
 `;
 
 export const List = styled.ul`
@@ -129,10 +298,40 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
+  flex-grow: 1;
+  min-height: 0;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.background.light};
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.text.secondary};
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.text.primary};
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.625rem;
+  }
 `;
 
 export const NonScrollableList = styled(List)`
-  overflow-y: hidden;
+  flex-grow: 1;
+  overflow-y: auto;
 `;
 
 export const ItemTitle = styled.span`

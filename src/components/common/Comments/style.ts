@@ -49,7 +49,7 @@ export const CommentInput = styled.input`
 
 export const SubmitButton = styled.button`
   background-color: ${({ theme }) => theme.colors.button.primary};
-  color: ${({ theme }) => theme.colors.text.button};
+  color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;

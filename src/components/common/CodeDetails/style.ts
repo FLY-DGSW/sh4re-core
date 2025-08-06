@@ -46,7 +46,7 @@ export const ActionButton = styled.button`
   gap: 0.5rem;
   width: 14rem;
   background-color: #0095ff;
-  color: ${({ theme }) => theme.colors.text.button};
+  color: white;
   border: none;
   padding: 0.75rem 1rem;
   border-radius: 4px;

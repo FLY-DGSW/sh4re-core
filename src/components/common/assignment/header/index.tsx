@@ -13,11 +13,22 @@ const AssignmentHeader = ({
   handleSortChange,
   searchTerm,
   handleSearchChange,
+  showAssignedOnly,
+  handleShowAssignedOnlyChange,
 }: AssignmentHeaderProps) => {
   return (
     <S.PageHeader>
       <S.PageTitle>과제 목록</S.PageTitle>
       <S.HeaderActions>
+        <S.CheckboxContainer>
+          <input
+            type='checkbox'
+            id='assigned-only'
+            checked={showAssignedOnly}
+            onChange={handleShowAssignedOnlyChange}
+          />
+          <label htmlFor='assigned-only'>할당된 과제만 보기</label>
+        </S.CheckboxContainer>
         <SortDropdown
           options={sortOptions}
           value={sortOrder}

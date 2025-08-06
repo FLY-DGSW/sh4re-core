@@ -4,7 +4,6 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     transition: background-color 0.3s ease, color 0.3s ease;
-    overscroll-behavior: contain;
     background-color: ${({ theme }) => theme.colors.background.secondary};
   }
   html,

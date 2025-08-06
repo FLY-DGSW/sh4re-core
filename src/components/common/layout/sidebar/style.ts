@@ -13,6 +13,14 @@ export const SidebarContainer = styled.div`
   gap: 2.75rem;
   overflow-y: hidden;
   position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+
+  @media (max-width: 768px) {
+    transform: translateX(-100%);
+  }
 `;
 
 export const Logo = styled.img`
