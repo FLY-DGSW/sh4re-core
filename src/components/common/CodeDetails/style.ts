@@ -45,7 +45,7 @@ export const ActionButton = styled.button`
   justify-content: center;
   gap: 0.5rem;
   width: 14rem;
-  background-color: ${({ theme }) => theme.colors.button.primary};
+  background-color: #0095ff;
   color: ${({ theme }) => theme.colors.text.button};
   border: none;
   padding: 0.75rem 1rem;

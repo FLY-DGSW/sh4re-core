@@ -13,7 +13,7 @@ export const MainContent = styled.div`
   background-color: ${({ theme }) => theme.colors.background.primary};
   padding: 2rem;
   border-radius: 4px;
-  height: 100%;
+  height: 95%;
   margin-top: 1rem;
 `;
 
