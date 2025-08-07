@@ -22,7 +22,7 @@ const CodeBlock = ({
   const commonProps = {
     $isFullScreen,
     fontSize,
-    noPadding,
+    $noPadding: noPadding,
   };
 
   if (isLoading) {
@@ -55,11 +55,15 @@ const fullScreenStyles = css`
   background-color: #24292e;
 `;
 
-const BaseContainer = styled.div<{ $isFullScreen: boolean; fontSize: number; noPadding: boolean }>`
+const BaseContainer = styled.div<{
+  $isFullScreen: boolean;
+  fontSize: number;
+  $noPadding: boolean;
+}>`
   height: 100%;
   overflow: auto;
   background-color: #24292e;
-  padding: ${({ noPadding }) => noPadding ? '0' : '1.2rem'};
+  padding: ${({ $noPadding }) => ($noPadding ? "0" : "1.2rem")};
   border-radius: 4px;
   font-size: ${({ fontSize }) => `${fontSize}rem`};
   transition: font-size 0.2s ease-in-out;

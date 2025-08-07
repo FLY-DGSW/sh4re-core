@@ -73,6 +73,7 @@ export const UserInfo = styled.div`
   span {
     ${typography.subHeading1}
     font-size: 1.25rem;
+    font-weight: 500;
   }
 `;
 

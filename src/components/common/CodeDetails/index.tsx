@@ -1,19 +1,26 @@
 import { FiCopy } from "react-icons/fi";
-import { IoHeartCircleOutline } from "react-icons/io5";
+import { IoHeartOutline, IoHeart } from "react-icons/io5";
 
 import type { CodeType } from "@/types/code/code";
 import * as S from "./style";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 interface CodeDetailsProps {
   data: CodeType;
 }
 
 const CodeDetails = ({ data }: CodeDetailsProps) => {
+  const [isLiked, setIsLiked] = useState(false);
+  
   const handleCopy = () => {
     navigator.clipboard.writeText(data.code).then(() => {
       toast.success("코드가 복사되었습니다!");
     });
+  };
+  
+  const handleLike = () => {
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -37,8 +44,8 @@ const CodeDetails = ({ data }: CodeDetailsProps) => {
       </S.Description>
       <S.Actions>
         <S.LikeBox>
-          <S.LikeButton>
-            <IoHeartCircleOutline />
+          <S.LikeButton onClick={handleLike} $isLiked={isLiked}>
+            {isLiked ? <IoHeart /> : <IoHeartOutline />}
           </S.LikeButton>
           <span>{data.likes}</span>
         </S.LikeBox>

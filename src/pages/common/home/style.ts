@@ -306,13 +306,16 @@ export const List = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.background.light};
-    border-radius: 3px;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.text.secondary};
+    background: transparent;
     border-radius: 3px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.text.secondary};
     opacity: 0.5;
   }
 

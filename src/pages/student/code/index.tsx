@@ -71,7 +71,11 @@ const CodePage = () => {
       <S.Header>
         <S.PageTitle>코드</S.PageTitle>
         <S.SearchWrapper>
-          <SearchInput value={searchTerm} onChange={setSearchTerm} placeholder="코드 검색" />
+          <SearchInput
+            value={searchTerm}
+            onChange={setSearchTerm}
+            placeholder='코드 검색'
+          />
         </S.SearchWrapper>
         <S.DropdownContainer>
           <SortDropdown

@@ -45,7 +45,7 @@ export const ActionButton = styled.button`
   justify-content: center;
   gap: 0.5rem;
   width: 14rem;
-  background-color: #0095ff;
+  background-color: ${({ theme }) => theme.colors.primary.blue};
   color: white;
   border: none;
   padding: 0.75rem 1rem;
@@ -67,7 +67,7 @@ export const LikeBox = styled.div`
   }
 `;
 
-export const LikeButton = styled.button`
+export const LikeButton = styled.button<{ $isLiked: boolean }>`
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -76,6 +76,8 @@ export const LikeButton = styled.button`
   svg {
     width: 2rem;
     height: 2rem;
+    color: ${({ $isLiked, theme }) =>
+      $isLiked ? theme.colors.primary.red : theme.colors.text.secondary};
   }
 `;
 

@@ -25,9 +25,13 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    sh4reCustomAxios.post("/user/theme", {
-      themeName: theme,
-    });
+    
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      sh4reCustomAxios.post("/user/theme", {
+        themeName: theme,
+      });
+    }
   }, [theme]);
 
   return (

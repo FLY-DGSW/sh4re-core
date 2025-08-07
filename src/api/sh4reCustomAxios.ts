@@ -45,7 +45,9 @@ sh4reCustomAxios.interceptors.response.use(
 
         return sh4reCustomAxios(originalRequest);
       } catch (refreshError) {
-        localStorage.removeItem(ACCESS_TOKEN_KEY);
+        token.removeToken();
+        alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+        window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }

@@ -10,8 +10,8 @@ import ProfileIcon from "@/assets/sidebar/profile.svg";
 import SunIcon from "@/assets/sidebar/sun.svg";
 import MoonIcon from "@/assets/sidebar/moon.svg";
 import LogoutIcon from "@/assets/sidebar/logout.svg";
-import { useUser } from "@/hooks/auth/login/useUser";
 import { useTheme } from "@/styles/theme/themeContext";
+import { RxHamburgerMenu } from "react-icons/rx";
 import Modal from "@/components/ui/modal";
 import { useState } from "react";
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
@@ -27,7 +27,6 @@ const navItems = [
 ];
 
 const Sidebar = () => {
-  const { data: user } = useUser();
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
@@ -77,8 +76,8 @@ const Sidebar = () => {
           ))}
         </S.Navigation>
         <S.UserInfo onClick={handleUserInfoClick}>
-          <ProfileIcon />
-          <span>{user?.name}</span>
+          <RxHamburgerMenu />
+          <span>더보기</span>
         </S.UserInfo>
       </S.BottomSection>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
