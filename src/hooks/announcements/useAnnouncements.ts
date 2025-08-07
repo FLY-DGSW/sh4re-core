@@ -1,5 +1,20 @@
 import { useState, useMemo, useCallback } from "react";
-import { announcements } from "@/constants/announcementsData";
+import { useQuery } from "@tanstack/react-query";
+import sh4reCustomAxios from "@/api/sh4reCustomAxios";
+import {
+  Announcement,
+  AnnouncementsApiResponse,
+} from "@/types/announcements/announcements";
+import { ANNOUNCEMENTS_QUERY_KEY } from "@/constants/queryKeys";
+
+const fetchAnnouncements = async (): Promise<Announcement[]> => {
+  const res = await sh4reCustomAxios.get<AnnouncementsApiResponse>(
+    "/announcements"
+  );
+  console.log("API Response:", res.data.data.announcements);
+  return res.data.data.announcements;
+};
+
 
 export const useAnnouncements = (searchTerm: string) => {
   const [openItemId, setOpenItemId] = useState<number | null>(null);
@@ -7,6 +22,15 @@ export const useAnnouncements = (searchTerm: string) => {
   const [sortOrder, setSortOrder] = useState("date");
   const [showNoticesOnly, setShowNoticesOnly] = useState(false);
   const itemsPerPage = 10;
+
+  const {
+    data: announcements = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ANNOUNCEMENTS_QUERY_KEY.all,
+    queryFn: fetchAnnouncements,
+  });
 
   const handleItemClick = (id: number) => {
     setOpenItemId(openItemId === id ? null : id);
@@ -28,7 +52,9 @@ export const useAnnouncements = (searchTerm: string) => {
 
     const sorted = [...filteredByLabel].sort((a, b) => {
       if (sortOrder === "date") {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+        const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+        const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+        return dateB - dateA;
       }
       if (sortOrder === "title") {
         return a.title.localeCompare(b.title);
@@ -37,7 +63,7 @@ export const useAnnouncements = (searchTerm: string) => {
     });
 
     return sorted;
-  }, [searchTerm, sortOrder, showNoticesOnly]);
+  }, [searchTerm, sortOrder, showNoticesOnly, announcements]);
 
   const totalPages = Math.ceil(processedAnnouncements.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -66,6 +92,8 @@ export const useAnnouncements = (searchTerm: string) => {
     showNoticesOnly,
     totalPages,
     selectedAnnouncements,
+    isLoading,
+    error,
     handleItemClick,
     setCurrentPage,
     handleSortChange,

@@ -1,7 +1,8 @@
 import * as S from "./style";
 import { chapters as assignmentData } from "@/constants/assignmentData";
-import { announcements } from "@/constants/announcementsData";
+
 import { handouts } from "@/constants/handoutData";
+import { useAnnouncements } from "@/hooks/announcements/useAnnouncements";
 import AssignmentIcon from "@/assets/sidebar/assignment.svg";
 import AnnouncementsIcon from "@/assets/sidebar/announcements.svg";
 import HandoutsIcon from "@/assets/sidebar/handouts.svg";
@@ -10,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { selectedAnnouncements, isLoading } = useAnnouncements("");
   const assignedAssignments = assignmentData
     .flatMap((chapter) => chapter.assignments)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -51,13 +53,17 @@ const HomePage = () => {
               </S.MoreLink>
             </S.Header>
             <S.NonScrollableList>
-              {announcements.slice(0, 3).map((item) => (
-                <S.StyledAnnouncementsItem
-                  key={item.id}
-                  announcement={item}
-                  onClick={() => navigate(`/announcements/${item.id}`)}
-                />
-              ))}
+              {isLoading ? (
+                <div>로딩 중...</div>
+              ) : (
+                selectedAnnouncements.slice(0, 3).map((announcement) => (
+                  <S.StyledAnnouncementsItem
+                    key={announcement.id}
+                    announcement={announcement}
+                    onClick={() => navigate(`/announcements/${announcement.id}`)}
+                  />
+                ))
+              )}
             </S.NonScrollableList>
           </S.AnnouncementsBox>
           <S.HandoutsBox>

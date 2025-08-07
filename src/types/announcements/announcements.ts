@@ -1,10 +1,23 @@
-export interface Announcements {
+export interface Announcement {
   id: number;
   label: "과제" | "공지";
   title: string;
-  date: string;
   author: string;
   content?: string;
+  schoolYear?: number;
+  grade?: number;
+  classNumber?: number;
+  userId?: number;
+  createdAt?: string;
+}
+
+export interface AnnouncementsApiResponse {
+  ok: boolean;
+  code: string;
+  message: string;
+  data: {
+    announcements: Announcement[];
+  };
 }
 
 export interface AnnouncementsLabelProps {
@@ -21,13 +34,13 @@ export interface AnnouncementsHeaderProps {
 }
 
 export interface AnnouncementsListProps {
-  announcements: Announcements[];
+  announcements: Announcement[];
   openItemId: number | null;
   handleItemClick: (id: number) => void;
 }
 
 export interface AnnouncementsItemProps {
-  announcement: Announcements;
+  announcement: Announcement;
   isOpen?: boolean;
   onClick?: () => void;
   className?: string;

@@ -1,11 +1,35 @@
-import { useMemo } from "react";
-import { announcements } from "@/constants/announcementsData";
+import { useQuery } from "@tanstack/react-query";
+import sh4reCustomAxios from "@/api/sh4reCustomAxios";
+import { Announcement } from "@/types/announcements/announcements";
+import { ANNOUNCEMENTS_QUERY_KEY } from "@/constants/queryKeys";
+
+interface AnnouncementDetailApiResponse {
+  ok: boolean;
+  code: string;
+  message: string;
+  data: Announcement;
+}
+
+const fetchAnnouncementById = async (id: number): Promise<Announcement> => {
+  const res = await sh4reCustomAxios.get<AnnouncementDetailApiResponse>(
+    `/announcements/${id}`
+  );
+  return res.data.data;
+};
 
 export const useAnnouncement = (id: number | undefined) => {
-  const announcement = useMemo(() => {
-    if (id === undefined) return undefined;
-    return announcements.find((ann) => ann.id === id);
-  }, [id]);
+  const {
+    data: announcement,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ANNOUNCEMENTS_QUERY_KEY.all.concat(
+      id !== undefined ? [id.toString()] : []
+    ),
+    queryFn: () =>
+      id ? fetchAnnouncementById(id) : Promise.reject("ID is undefined"),
+    enabled: id !== undefined,
+  });
 
-  return announcement;
+  return { announcement, isLoading, error };
 };

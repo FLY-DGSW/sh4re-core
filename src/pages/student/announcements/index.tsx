@@ -15,6 +15,8 @@ const AnnouncementsPage = () => {
     showNoticesOnly,
     totalPages,
     selectedAnnouncements,
+    isLoading,
+    error,
     handleItemClick,
     setCurrentPage,
     handleSortChange,
@@ -25,10 +27,13 @@ const AnnouncementsPage = () => {
     setSearchTerm(term);
   };
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <S.Container>
       <S.MainContent>
-        <AnnouncementsHeader 
+        <AnnouncementsHeader
           sortOrder={sortOrder}
           showNoticesOnly={showNoticesOnly}
           handleSortChange={handleSortChange}
@@ -36,7 +41,7 @@ const AnnouncementsPage = () => {
           handleSearchChange={handleSearchChange}
           handleShowNoticesOnlyChange={handleShowNoticesOnlyChange}
         />
-        <AnnouncementsList 
+        <AnnouncementsList
           announcements={selectedAnnouncements}
           openItemId={openItemId}
           handleItemClick={handleItemClick}
