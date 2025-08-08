@@ -12,7 +12,7 @@ import MoonIcon from "@/assets/sidebar/moon.svg";
 import LogoutIcon from "@/assets/sidebar/logout.svg";
 import { useTheme } from "@/styles/theme/themeContext";
 import { RxHamburgerMenu } from "react-icons/rx";
-import Modal from "@/components/ui/modal";
+import Modal from "@/components/ui/Modal";
 import { useState } from "react";
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
 import token from "@/libs/token/token";

@@ -1,7 +1,7 @@
 import HandoutsHeader from "@/components/common/handouts/header";
 import HandoutsList from "@/components/common/handouts/list";
 import * as S from "./style";
-import Pagination from "@/components/ui/pagination";
+import Pagination from "@/components/ui/Pagination";
 import { useHandouts } from "@/hooks/handouts/useHandouts";
 import { useState } from "react";
 

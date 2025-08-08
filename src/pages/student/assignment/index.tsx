@@ -1,7 +1,7 @@
 import AssignmentHeader from "@/components/common/assignment/header";
 import ChapterList from "@/components/common/assignment/chapter/list";
 import * as S from "./style";
-import Pagination from "@/components/ui/pagination";
+import Pagination from "@/components/ui/Pagination";
 import { useAssignments } from "@/hooks/assignment/useAssignments";
 import { useState } from "react";
 
@@ -10,13 +10,11 @@ const AssignmentPage = () => {
   const [showAssignedOnly, setShowAssignedOnly] = useState(false);
 
   const {
-    openChapterId,
     openAssignmentId,
     currentPage,
     sortOrder,
     totalPages,
     selectedChapters,
-    handleChapterClick,
     handleAssignmentClick,
     handleSortChange,
     memoizedCalculateProgress,

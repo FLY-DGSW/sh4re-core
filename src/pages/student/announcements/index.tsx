@@ -1,7 +1,7 @@
 import AnnouncementsHeader from "@/components/common/announcements/header";
 import AnnouncementsList from "@/components/common/announcements/list";
 import * as S from "./style";
-import Pagination from "@/components/ui/pagination";
+import Pagination from "@/components/ui/Pagination";
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements";
 import { useState } from "react";
 
