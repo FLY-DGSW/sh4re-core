@@ -1,17 +1,15 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import sh4reCustomAxios from '@/api/sh4reCustomAxios';
-import { CODE } from '@/constants/queryKeys';
-import type { CodeType } from '@/types/code/code';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import sh4reCustomAxios from "@/api/sh4reCustomAxios";
+import { CODE } from "@/constants/queryKeys";
+import type { CodeType } from "@/types/code/code";
 
 export interface CreateCodeRequest {
   title: string;
   description?: string;
-  language: CodeType['language'];
+  language: CodeType["language"];
   assignment?: string;
   code: string;
   className: string;
-  student: string;
-  schoolYear: number;
 }
 
 interface CreateCodeResponse {
@@ -23,7 +21,9 @@ interface CreateCodeResponse {
   };
 }
 
-const createCode = async (data: CreateCodeRequest): Promise<CreateCodeResponse> => {
+const createCode = async (
+  data: CreateCodeRequest
+): Promise<CreateCodeResponse> => {
   const sanitizedData = { ...data };
   if (!sanitizedData.assignment) {
     delete sanitizedData.assignment;
@@ -32,7 +32,7 @@ const createCode = async (data: CreateCodeRequest): Promise<CreateCodeResponse> 
     delete sanitizedData.description;
   }
 
-  const response = await sh4reCustomAxios.post('/codes', sanitizedData);
+  const response = await sh4reCustomAxios.post("/codes", sanitizedData);
   return response.data;
 };
 

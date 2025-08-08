@@ -67,8 +67,6 @@ const CodeCreatePage = () => {
       description: description.trim() || undefined,
       assignment: assignment.trim() || undefined,
       className: className,
-      student: user.name,
-      schoolYear: user.admissionYear,
     };
 
     try {
