@@ -47,7 +47,7 @@ export const PageTitle = styled.h1`
 
 export const MainContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
   flex: 1;
   min-height: 0;
@@ -62,8 +62,6 @@ export const EditorSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.background.primary};
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   min-height: 500px;
 
@@ -75,7 +73,6 @@ export const EditorSection = styled.div`
 export const EditorContainer = styled.div`
   flex: 1;
   min-height: 500px;
-  border-radius: 8px;
   overflow: hidden;
 
   @media (max-width: 1024px) {
@@ -83,7 +80,7 @@ export const EditorContainer = styled.div`
   }
 
   .monaco-editor {
-    border-radius: 8px;
+    border-radius: 4px;
   }
 `;
 
@@ -96,22 +93,20 @@ export const LoadingContainer = styled.div`
   color: #cccccc;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 4px;
 `;
 
 export const FormSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.background.primary};
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
   padding: 1.5rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 `;
-
 
 export const SectionTitle = styled.h2`
   ${typography.subHeading1}
@@ -139,27 +134,27 @@ export const LanguageTab = styled.button<{ $active: boolean }>`
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  background-color: ${({ theme, $active }) => 
-    $active ? theme.colors.primary.blue : 'transparent'};
-  color: ${({ theme, $active }) => 
-    $active ? 'white' : theme.colors.text.secondary};
+  background-color: ${({ theme, $active }) =>
+    $active ? theme.colors.primary.blue : "transparent"};
+  color: ${({ theme, $active }) =>
+    $active ? "white" : theme.colors.text.secondary};
   cursor: pointer;
-  font-weight: ${({ $active }) => $active ? '600' : '400'};
+  font-weight: ${({ $active }) => ($active ? "600" : "400")};
   transition: all 0.2s ease;
   flex: 1;
   text-align: center;
 
   &:hover {
-    background-color: ${({ theme, $active }) => 
+    background-color: ${({ theme, $active }) =>
       $active ? theme.colors.primary.blue : theme.colors.background.secondary};
-    color: ${({ theme, $active }) => 
-      $active ? 'white' : theme.colors.text.primary};
+    color: ${({ theme, $active }) =>
+      $active ? "white" : theme.colors.text.primary};
   }
 
   &:focus {
     outline: none;
-    box-shadow: ${({ $active }) => 
-      $active ? 'none' : '0 0 0 2px rgba(0, 149, 255, 0.3)'};
+    box-shadow: ${({ $active }) =>
+      $active ? "none" : "0 0 0 2px rgba(0, 149, 255, 0.3)"};
   }
 
   @media (max-width: 480px) {
@@ -167,7 +162,6 @@ export const LanguageTab = styled.button<{ $active: boolean }>`
     font-size: 0.9rem;
   }
 `;
-
 
 export const Form = styled.form`
   display: flex;
@@ -230,7 +224,6 @@ export const Select = styled.select`
     padding: 0.5rem;
   }
 `;
-
 
 export const Textarea = styled.textarea`
   ${typography.body1}

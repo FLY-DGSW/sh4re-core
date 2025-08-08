@@ -148,7 +148,7 @@ const CodeEditPage = () => {
           <S.SectionTitle>코드 수정</S.SectionTitle>
           <S.Form onSubmit={handleSubmit}>
             <S.FormGroup>
-              <S.Label htmlFor='title'>제목 *</S.Label>
+              <S.Label htmlFor='title'>제목</S.Label>
               <S.Input
                 id='title'
                 type='text'
@@ -159,7 +159,7 @@ const CodeEditPage = () => {
               />
             </S.FormGroup>
             <S.FormGroup>
-              <S.Label>언어 *</S.Label>
+              <S.Label>언어</S.Label>
               <S.LanguageTabs>
                 <S.LanguageTab
                   type='button'
@@ -170,17 +170,17 @@ const CodeEditPage = () => {
                 </S.LanguageTab>
                 <S.LanguageTab
                   type='button'
-                  $active={language === "javascript"}
-                  onClick={() => setLanguage("javascript")}
-                >
-                  JavaScript
-                </S.LanguageTab>
-                <S.LanguageTab
-                  type='button'
                   $active={language === "sql"}
                   onClick={() => setLanguage("sql")}
                 >
                   SQL
+                </S.LanguageTab>
+                <S.LanguageTab
+                  type='button'
+                  $active={language === "javascript"}
+                  onClick={() => setLanguage("javascript")}
+                >
+                  JavaScript
                 </S.LanguageTab>
               </S.LanguageTabs>
             </S.FormGroup>
@@ -191,7 +191,7 @@ const CodeEditPage = () => {
                 value={assignment}
                 onChange={(e) => setAssignment(e.target.value)}
               >
-                <option value=''>과제를 선택하세요 (선택사항)</option>
+                <option value=''>과제를 선택하세요</option>
                 {allAssignments.map((assignment) => (
                   <option key={assignment.id} value={assignment.title}>
                     [{assignment.chapterTitle}] {assignment.title}
@@ -205,7 +205,7 @@ const CodeEditPage = () => {
                 id='description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder='코드에 대한 설명을 입력하세요 (선택사항)'
+                placeholder='코드에 대한 설명을 입력하세요'
                 rows={4}
               />
             </S.FormGroup>

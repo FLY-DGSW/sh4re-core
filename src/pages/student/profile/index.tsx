@@ -14,9 +14,14 @@ const ProfilePage = () => {
   const { data: user } = useUser();
   const { data: codes = [], isLoading, error } = useCodes();
 
-  const myCodes = user ? codes.filter((code) => code.student === user.name) : [];
+  const myCodes = user
+    ? codes.filter((code) => code.student === user.name)
+    : [];
 
-  const totalLikes = myCodes.reduce((sum, code) => sum + (code.likeCount || code.likes || 0), 0);
+  const totalLikes = myCodes.reduce(
+    (sum, code) => sum + (code.likeCount || code.likes || 0),
+    0
+  );
 
   const handleCodeClick = (codeId: number) => {
     navigate(`/code/${codeId}`, { state: { fromProfile: true } });
@@ -52,7 +57,10 @@ const ProfilePage = () => {
         <S.TopSection>
           <S.UserInfoSection>
             <S.UserInfoRow>
-              <S.ProfileImage src="https://via.placeholder.com/150" alt='Profile' />
+              <S.ProfileImage
+                src='https://via.placeholder.com/150'
+                alt='Profile'
+              />
               <S.UserInfoText>
                 <S.UserInfo>
                   <S.UserName>{user.name}</S.UserName>
@@ -62,7 +70,8 @@ const ProfilePage = () => {
                 </S.UserInfo>
                 <S.UserDetail>
                   <SchoolIcon />
-                  대구소프트웨어마이스터고등학교 {user.grade}학년 {user.classNumber}반
+                  대구소프트웨어마이스터고등학교 {user.grade}학년{" "}
+                  {user.classNumber}반
                 </S.UserDetail>
                 <S.UserDetail style={{ marginLeft: "0.1rem" }}>
                   <EmailIcon />
@@ -111,7 +120,11 @@ const ProfilePage = () => {
               onClick={() => handleCodeClick(code.id)}
             >
               <S.CodeBox>
-                <CodeBlock code={code.code} language={code.language} />
+                <CodeBlock
+                  noPadding
+                  code={code.code}
+                  language={code.language}
+                />
               </S.CodeBox>
               <S.CodeInfo>
                 <S.CodeTitle>{code.title}</S.CodeTitle>
