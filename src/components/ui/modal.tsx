@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+import styled from "styled-components";
 
 interface ModalProps {
   isOpen: boolean;
@@ -6,38 +7,42 @@ interface ModalProps {
   children: ReactNode;
 }
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  bottom: 1rem;
+  left: 8rem;
+  width: 100%;
+  display: flex;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: ${({ theme }) => theme.colors.background.primary};
+  padding: 0.5rem;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 18px 0px;
+  position: relative;
+`;
+
+const ClickToCloseOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 1000,
-      }}
-      onClick={onClose}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          padding: '20px',
-          borderRadius: '8px',
-          maxWidth: '500px',
-          width: '90%',
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {children}
-      </div>
-    </div>
+    <ClickToCloseOverlay onClick={onClose}>
+      <ModalOverlay onClick={onClose}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
+          {children}
+        </ModalContent>
+      </ModalOverlay>
+    </ClickToCloseOverlay>
   );
 };
 
