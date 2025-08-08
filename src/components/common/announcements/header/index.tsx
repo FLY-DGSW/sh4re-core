@@ -1,6 +1,6 @@
 import * as S from "./style";
-import SortDropdown from "@/components/ui/sortDropdown";
-import SearchInput from "@/components/ui/searchInput";
+import SortDropdown from "@/components/ui/SortDropdown";
+import SearchInput from "@/components/ui/SearchInput";
 import { AnnouncementsHeaderProps } from "@/types/announcements/announcements";
 
 const sortOptions = [

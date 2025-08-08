@@ -9,6 +9,8 @@ import AssignmentSubmitPage from "@/pages/student/assignmentSubmit";
 import HomePage from "@/pages/common/home/index";
 import AnnouncementsDetailPage from "@/pages/student/announcementDetail/index";
 import CodePage from "@/pages/student/code";
+import CodeCreatePage from "@/pages/student/code/create";
+import CodeEditPage from "@/pages/student/code/edit";
 import CodeDetailPage from "@/pages/student/codeDetail";
 import ProfilePage from "@/pages/student/profile";
 import ScrollToTop from "@/util/ScrollToTop";
@@ -34,7 +36,9 @@ const Router = () => {
             />
             <Route path='/handouts' element={<HandoutsPage />} />
             <Route path='/code' element={<CodePage />} />
+            <Route path='/code/create' element={<CodeCreatePage />} />
             <Route path='/code/:codeId' element={<CodeDetailPage />} />
+            <Route path='/code/:codeId/edit' element={<CodeEditPage />} />
             <Route path='/profile' element={<ProfilePage />} />
           </Route>
         </Route>

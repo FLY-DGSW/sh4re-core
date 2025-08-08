@@ -92,3 +92,14 @@ export const Meta = styled.div`
 `;
 
 export const MetaItem = styled.span``;
+
+export const Info = styled.div`
+  ${typography.body1}
+  color: ${({ theme }) => theme.colors.text.primary};
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.background.primary};
+  flex-grow: 1;
+`;

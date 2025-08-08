@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { FiMaximize, FiMinimize, FiZoomIn, FiZoomOut } from "react-icons/fi";
-import CodeBlock from "@/components/ui/codeblock";
-import CodeDetails from "@/components/common/CodeDetails";
-import Comments from "@/components/common/Comments";
-import BackButton from "@/components/ui/backButton";
-import { codes } from "@/constants/codeData";
+import {
+  FiMaximize,
+  FiMinimize,
+  FiZoomIn,
+  FiZoomOut,
+  FiEdit,
+  FiTrash2,
+} from "react-icons/fi";
+import CodeBlock from "@/components/ui/CodeBlock";
+import CodeDetails from "@/components/common/codeDetails";
+import Comments from "@/components/common/comments";
+import BackButton from "@/components/ui/BackButton";
+import { useCode } from "@/hooks/code/useCode";
+import { useDeleteCode } from "@/hooks/code/useDeleteCode";
+import { useToggleCodeLike } from "@/hooks/code/useToggleCodeLike";
+import { useUser } from "@/hooks/auth/login/useUser";
 import * as S from "./style";
 
 const CodeDetailPage = () => {
@@ -15,7 +25,10 @@ const CodeDetailPage = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [fontSize, setFontSize] = useState(1);
 
-  const codeData = codes.find((c) => c.id.toString() === codeId);
+  const { data: user } = useUser();
+  const { data: codeData, isLoading, error } = useCode(Number(codeId));
+  const deleteCodeMutation = useDeleteCode();
+  const toggleLikeMutation = useToggleCodeLike();
 
   const commentsData = [
     {
@@ -30,7 +43,37 @@ const CodeDetailPage = () => {
     },
   ];
 
-  if (!codeData) {
+  const isOwner = user && codeData && user.name === codeData.student;
+
+  const handleEdit = () => {
+    navigate(`/code/${codeId}/edit`);
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm("정말로 이 코드를 삭제하시겠습니까?")) {
+      try {
+        await deleteCodeMutation.mutateAsync(Number(codeId));
+        navigate("/code");
+      } catch (error) {
+        console.error("Failed to delete code:", error);
+        alert("코드 삭제에 실패했습니다.");
+      }
+    }
+  };
+
+  const handleToggleLike = async () => {
+    try {
+      await toggleLikeMutation.mutateAsync(Number(codeId));
+    } catch (error) {
+      console.error("Failed to toggle like:", error);
+    }
+  };
+
+  if (isLoading) {
+    return <div>로딩 중...</div>;
+  }
+
+  if (error || !codeData) {
     return <div>코드를 찾을 수 없습니다.</div>;
   }
 
@@ -47,7 +90,7 @@ const CodeDetailPage = () => {
     if (location.state?.fromProfile) {
       navigate("/profile");
     } else {
-      navigate(-1);
+      navigate("/code");
     }
   };
 
@@ -76,7 +119,9 @@ const CodeDetailPage = () => {
       ) : (
         <>
           <BackButton onClick={handleGoBack}>
-            {location.state?.fromProfile ? "프로필로 돌아가기" : "코드 전체보기"}
+            {location.state?.fromProfile
+              ? "프로필로 돌아가기"
+              : "코드 전체보기"}
           </BackButton>
           <S.MainContent>
             <S.CodeContainer>
@@ -95,10 +140,27 @@ const CodeDetailPage = () => {
                 <S.FontControlButton onClick={toggleFullScreen}>
                   <FiMaximize />
                 </S.FontControlButton>
+                {isOwner && (
+                  <>
+                    <S.FontControlButton onClick={handleEdit}>
+                      <FiEdit />
+                    </S.FontControlButton>
+                    <S.FontControlButton
+                      onClick={handleDelete}
+                      disabled={deleteCodeMutation.isPending}
+                    >
+                      <FiTrash2 />
+                    </S.FontControlButton>
+                  </>
+                )}
               </S.FontControlWrapper>
             </S.CodeContainer>
             <S.DetailsContainer>
-              <CodeDetails data={codeData} />
+              <CodeDetails
+                data={codeData}
+                onToggleLike={handleToggleLike}
+                isToggling={toggleLikeMutation.isPending}
+              />
             </S.DetailsContainer>
           </S.MainContent>
           <S.CommentsContainer>

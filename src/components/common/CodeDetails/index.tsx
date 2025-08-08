@@ -1,26 +1,30 @@
 import { FiCopy } from "react-icons/fi";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-
-import type { CodeType } from "@/types/code/code";
-import * as S from "./style";
+import type { CodeDetailType } from "@/hooks/code/useCode";
+import * as S from "../codeDetails/style";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 interface CodeDetailsProps {
-  data: CodeType;
+  data: CodeDetailType;
+  onToggleLike: () => void;
+  isToggling?: boolean;
 }
 
-const CodeDetails = ({ data }: CodeDetailsProps) => {
-  const [isLiked, setIsLiked] = useState(false);
-  
+const CodeDetails = ({
+  data,
+  onToggleLike,
+  isToggling = false,
+}: CodeDetailsProps) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(data.code).then(() => {
       toast.success("코드가 복사되었습니다!");
     });
   };
-  
+
   const handleLike = () => {
-    setIsLiked(!isLiked);
+    if (!isToggling) {
+      onToggleLike();
+    }
   };
 
   return (
@@ -39,15 +43,19 @@ const CodeDetails = ({ data }: CodeDetailsProps) => {
           </S.MetaItem>
         </S.Meta>
       </S.Header>
-      <S.Description>
-        {data.description || "등록된 설명이 없습니다."}
-      </S.Description>
+      <S.Info>
+        <S.MetaItem>{data.description}</S.MetaItem>
+      </S.Info>
       <S.Actions>
         <S.LikeBox>
-          <S.LikeButton onClick={handleLike} $isLiked={isLiked}>
-            {isLiked ? <IoHeart /> : <IoHeartOutline />}
+          <S.LikeButton
+            onClick={handleLike}
+            $isLiked={data.isLikedByUser}
+            disabled={isToggling}
+          >
+            {data.isLikedByUser ? <IoHeart /> : <IoHeartOutline />}
           </S.LikeButton>
-          <span>{data.likes}</span>
+          <span>{data.likeCount}</span>
         </S.LikeBox>
         <S.ActionButton onClick={handleCopy}>
           <FiCopy />

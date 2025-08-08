@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useAnnouncement } from "@/hooks/announcements/useAnnouncement";
-import BackButton from "@/components/ui/backButton";
+import BackButton from "@/components/ui/BackButton";
 import * as S from "./style";
 
 const formatDateTimeToMinute = (dateString?: string) => {

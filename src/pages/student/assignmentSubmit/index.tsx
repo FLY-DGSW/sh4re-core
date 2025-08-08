@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./style";
-import BackButton from "@/components/ui/backButton";
+import BackButton from "@/components/ui/BackButton";
 import AssignmentInfo from "@/components/common/assignment/submit/info";
 import SubmitForm from "@/components/common/assignment/submit/form";
 import SubmittedInfo from "@/components/common/assignment/submit/submitted";

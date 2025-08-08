@@ -7,7 +7,7 @@ import {
   themes,
 } from "./styles/theme/themeContext";
 import GlobalStyle from "./styles/GlobalStyle";
-import Toast from "./components/ui/toast/index";
+import Toast from "./components/ui/Toast";
 
 function ThemedApp() {
   const { theme } = useTheme();

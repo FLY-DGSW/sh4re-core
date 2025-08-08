@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
-import { codes } from "@/constants/codeData";
-import CodeBlock from "@/components/ui/codeblock";
-import ProgressBar from "@/components/ui/progressBar";
+import { useCodes } from "@/hooks/code/useCodes";
+import { useUser } from "@/hooks/auth/login/useUser";
+import CodeBlock from "@/components/ui/CodeBlock";
+import ProgressBar from "@/components/ui/ProgressBar";
 import Heart from "@/assets/profile/heart.svg";
 import Code from "@/assets/profile/code.svg";
 import SchoolIcon from "@/assets/profile/school.svg";
@@ -10,23 +11,40 @@ import EmailIcon from "@/assets/profile/email.svg";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
+  const { data: user } = useUser();
+  const { data: codes = [], isLoading, error } = useCodes();
 
-  const user = {
-    profileImage: "https://via.placeholder.com/150",
-    name: "채근영",
-    username: "chaeyn",
-    school: "대구소프트웨어마이스터고등학교 1학년 2반 17번",
-    email: "chaeyn@dgsw.hs.kr",
-    assignmentCompletion: 76.5,
-  };
+  const myCodes = user ? codes.filter((code) => code.student === user.name) : [];
 
-  const myCodes = codes.filter((code) => code.student === user.username);
-
-  const totalLikes = myCodes.reduce((sum, code) => sum + code.likes, 0);
+  const totalLikes = myCodes.reduce((sum, code) => sum + (code.likeCount || code.likes || 0), 0);
 
   const handleCodeClick = (codeId: number) => {
     navigate(`/code/${codeId}`, { state: { fromProfile: true } });
   };
+
+  if (isLoading) {
+    return (
+      <S.Container>
+        <div>로딩 중...</div>
+      </S.Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <S.Container>
+        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
+      </S.Container>
+    );
+  }
+
+  if (!user) {
+    return (
+      <S.Container>
+        <div>사용자 정보를 불러올 수 없습니다.</div>
+      </S.Container>
+    );
+  }
 
   return (
     <S.Container>
@@ -34,17 +52,17 @@ const ProfilePage = () => {
         <S.TopSection>
           <S.UserInfoSection>
             <S.UserInfoRow>
-              <S.ProfileImage src={user.profileImage} alt='Profile' />
+              <S.ProfileImage src="https://via.placeholder.com/150" alt='Profile' />
               <S.UserInfoText>
                 <S.UserInfo>
                   <S.UserName>{user.name}</S.UserName>
                   <S.UserDetailSecondary>
-                    @{user.username}
+                    @{user.username || user.name}
                   </S.UserDetailSecondary>
                 </S.UserInfo>
                 <S.UserDetail>
                   <SchoolIcon />
-                  {user.school}
+                  대구소프트웨어마이스터고등학교 {user.grade}학년 {user.classNumber}반
                 </S.UserDetail>
                 <S.UserDetail style={{ marginLeft: "0.1rem" }}>
                   <EmailIcon />
@@ -77,9 +95,9 @@ const ProfilePage = () => {
             <S.StatItem>
               <S.StatBox>
                 <S.StatLabel>과제 수행률</S.StatLabel>
-                <S.StatValue>{user.assignmentCompletion}%</S.StatValue>
+                <S.StatValue>76.5%</S.StatValue>
               </S.StatBox>
-              <ProgressBar progress={user.assignmentCompletion} />
+              <ProgressBar progress={76.5} />
             </S.StatItem>
           </S.StatRow>
         </S.AssignmentProgressSection>

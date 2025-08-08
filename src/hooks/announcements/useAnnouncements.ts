@@ -11,10 +11,8 @@ const fetchAnnouncements = async (): Promise<Announcement[]> => {
   const res = await sh4reCustomAxios.get<AnnouncementsApiResponse>(
     "/announcements"
   );
-  console.log("API Response:", res.data.data.announcements);
   return res.data.data.announcements;
 };
-
 
 export const useAnnouncements = (searchTerm: string) => {
   const [openItemId, setOpenItemId] = useState<number | null>(null);
