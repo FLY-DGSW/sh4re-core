@@ -6,7 +6,7 @@ interface DeleteCodeResponse {
   ok: boolean;
   code: string;
   message: string;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 const deleteCode = async (codeId: number): Promise<DeleteCodeResponse> => {

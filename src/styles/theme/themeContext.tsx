@@ -1,19 +1,8 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import { lightTheme, darkTheme } from "./theme";
+import { keysOfThemes, type Theme } from "./themeUtils";
+import { ThemeContext } from "./context";
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
-
-const themes = { dark: darkTheme, light: lightTheme };
-type Theme = keyof typeof themes;
-const keysOfThemes = Object.keys(themes) as Theme[];
-
-interface ThemeContextType {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  keysOfThemes: Theme[];
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -41,12 +30,3 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context)
-    throw new Error("useTheme must be used within ThemeProviderCustom");
-  return context;
-};
-
-export { themes };
-export type { Theme };

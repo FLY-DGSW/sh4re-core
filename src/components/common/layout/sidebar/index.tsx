@@ -10,7 +10,7 @@ import ProfileIcon from "@/assets/sidebar/profile.svg";
 import SunIcon from "@/assets/sidebar/sun.svg";
 import MoonIcon from "@/assets/sidebar/moon.svg";
 import LogoutIcon from "@/assets/sidebar/logout.svg";
-import { useTheme } from "@/styles/theme/themeContext";
+import { useTheme } from "@/styles/theme/useTheme";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Modal from "@/components/ui/Modal";
 import { useState } from "react";

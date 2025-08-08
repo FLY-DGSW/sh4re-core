@@ -1,11 +1,9 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router";
 import { ThemeProvider } from "styled-components";
-import {
-  ThemeProviderCustom,
-  useTheme,
-  themes,
-} from "./styles/theme/themeContext";
+import { ThemeProviderCustom } from "./styles/theme/themeContext";
+import { useTheme } from "./styles/theme/useTheme";
+import { themes } from "./styles/theme/themeUtils";
 import GlobalStyle from "./styles/GlobalStyle";
 import Toast from "./components/ui/Toast";
 

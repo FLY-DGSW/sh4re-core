@@ -1,6 +1,6 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useTheme } from "@/styles/theme/themeContext";
+import { useTheme } from "@/styles/theme/useTheme";
 
 const Toast = () => {
   const { theme } = useTheme();
