@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/common/auth/login";
+import LoginPage from "./pages/common/Auth/Login";
 import Layout from "@/components/common/layout/Layout";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
-import AnnouncementsPage from "@/pages/student/announcements/index";
-import HandoutsPage from "@/pages/student/handouts/index";
-import AssignmentPage from "@/pages/student/assignment";
-import AssignmentSubmitPage from "@/pages/student/assignmentSubmit";
-import HomePage from "@/pages/common/home/index";
-import AnnouncementsDetailPage from "@/pages/student/announcementDetail/index";
-import CodePage from "@/pages/student/code";
-import CodeCreatePage from "@/pages/student/code/create";
-import CodeEditPage from "@/pages/student/code/edit";
-import CodeDetailPage from "@/pages/student/codeDetail";
-import ProfilePage from "@/pages/student/profile";
+import HandoutsPage from "@/pages/student/Handout/index";
+import AssignmentSubmitPage from "@/pages/student/Assignment/Submit";
+import HomePage from "@/pages/common/Home/index";
+import AnnouncementsDetailPage from "@/pages/student/Announcement/Detail/index";
+import CodeCreatePage from "@/pages/student/Code/Create";
+import CodeEditPage from "@/pages/student/Code/Edit";
+import CodeDetailPage from "@/pages/student/Code/Detail";
+import ProfilePage from "@/pages/student/Profile";
 import ScrollToTop from "@/util/ScrollToTop";
+import AnnouncementsPage from "./pages/student/Announcement/List";
+import AssignmentPage from "./pages/student/Assignment/List";
+import CodePage from "./pages/student/Code/List";
 
 const Router = () => {
   return (

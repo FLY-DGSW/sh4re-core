@@ -24,7 +24,9 @@ export interface AssignmentHeaderProps {
   searchTerm: string;
   handleSearchChange: (term: string) => void;
   showAssignedOnly: boolean;
-  handleShowAssignedOnlyChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleShowAssignedOnlyChange: (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 }
 
 export interface ChapterListProps {
