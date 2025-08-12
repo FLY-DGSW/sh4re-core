@@ -9,6 +9,7 @@ const sh4reCustomAxios: AxiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
 sh4reCustomAxios.interceptors.request.use((config) => {
@@ -31,9 +32,7 @@ sh4reCustomAxios.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const res = await axios.post(`${SERVER_URL}/api/auth/refresh`, null, {
-          withCredentials: true,
-        });
+        const res = await axios.post(`${SERVER_URL}/api/auth/refresh`, null);
 
         const { accessToken } = res.data.data;
         token.setToken(ACCESS_TOKEN_KEY, accessToken);

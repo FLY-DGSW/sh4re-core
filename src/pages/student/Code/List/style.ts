@@ -5,6 +5,7 @@ import { typography } from "@/styles/typography";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
@@ -125,7 +126,7 @@ export const CodeGrid = styled.div`
 
   @media (min-width: 1600px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: 0 auto;
   }
 

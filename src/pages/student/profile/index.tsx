@@ -8,14 +8,8 @@ import SchoolIcon from "@/assets/profile/school.svg";
 import EmailIcon from "@/assets/profile/email.svg";
 
 const ProfilePage = () => {
-  const {
-    user,
-    myCodes,
-    totalLikes,
-    isLoading,
-    error,
-    handleCodeClick,
-  } = useProfilePage();
+  const { user, myCodes, totalLikes, isLoading, error, handleCodeClick } =
+    useProfilePage();
 
   if (isLoading) {
     return (
@@ -61,7 +55,7 @@ const ProfilePage = () => {
                 <S.UserDetail>
                   <SchoolIcon />
                   대구소프트웨어마이스터고등학교 {user.grade}학년{" "}
-                  {user.classNumber}반
+                  {user.classNumber}반 {user.studentNumber}번
                 </S.UserDetail>
                 <S.UserDetail style={{ marginLeft: "0.1rem" }}>
                   <EmailIcon />

@@ -262,7 +262,7 @@ export const LikeBox = styled.div`
   padding: 0;
   gap: 0.1rem;
   span {
-    margin-top: 0.3rem;
+    margin-top: 0.1rem;
   }
 `;
 

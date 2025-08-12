@@ -8,7 +8,9 @@ export const useProfilePage = () => {
   const { data: codes = [], isLoading, error } = useCodes();
 
   const myCodes = user
-    ? codes.filter((code) => code.student === user.name)
+    ? codes
+        .filter((code) => code.student === user.name)
+        .sort((a, b) => b.id - a.id)
     : [];
 
   const totalLikes = myCodes.reduce(
