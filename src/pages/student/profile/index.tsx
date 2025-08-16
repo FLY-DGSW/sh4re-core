@@ -6,34 +6,15 @@ import Heart from "@/assets/profile/heart.svg";
 import Code from "@/assets/profile/code.svg";
 import SchoolIcon from "@/assets/profile/school.svg";
 import EmailIcon from "@/assets/profile/email.svg";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
-  const { user, myCodes, totalLikes, isLoading, error, handleCodeClick } =
-    useProfilePage();
+  const navigate = useNavigate();
+  const { user, myCodes, totalLikes, handleCodeClick } = useProfilePage();
 
-  if (isLoading) {
-    return (
-      <S.Container>
-        <div>로딩 중...</div>
-      </S.Container>
-    );
-  }
-
-  if (error) {
-    return (
-      <S.Container>
-        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
-      </S.Container>
-    );
-  }
-
-  if (!user) {
-    return (
-      <S.Container>
-        <div>사용자 정보를 불러올 수 없습니다.</div>
-      </S.Container>
-    );
-  }
+  const handleLinkToCreateCode = () => {
+    navigate("/code/create", { state: { fromProfile: true } });
+  };
 
   return (
     <S.Container>
@@ -41,10 +22,7 @@ const ProfilePage = () => {
         <S.TopSection>
           <S.UserInfoSection>
             <S.UserInfoRow>
-              <S.ProfileImage
-                src='https://via.placeholder.com/150'
-                alt='Profile'
-              />
+              <S.ProfileImage src='https://placehold.co/400' alt='Profile' />
               <S.UserInfoText>
                 <S.UserInfo>
                   <S.UserName>{user.name}</S.UserName>
@@ -95,29 +73,38 @@ const ProfilePage = () => {
           </S.StatRow>
         </S.AssignmentProgressSection>
       </S.ProfileHeader>
-      <S.CodeSection>
-        <S.SectionTitle>내가 작성한 코드</S.SectionTitle>
-        <S.CodeGrid>
-          {myCodes.map((code) => (
-            <S.CodeContainer
-              key={code.id}
-              onClick={() => handleCodeClick(code.id)}
-            >
-              <S.CodeBox>
-                <CodeBlock
-                  noPadding
-                  code={code.code}
-                  language={code.language}
-                />
-              </S.CodeBox>
-              <S.CodeInfo>
-                <S.CodeTitle>{code.title}</S.CodeTitle>
-                <S.StudentInfo>{code.student}</S.StudentInfo>
-              </S.CodeInfo>
-            </S.CodeContainer>
-          ))}
-        </S.CodeGrid>
-      </S.CodeSection>
+      {myCodes.length === 0 ? (
+        <S.BlankCode>
+          <S.BlankTitle>아직 작성한 코드가 없습니다.</S.BlankTitle>
+          <S.LinkToCreateCode onClick={handleLinkToCreateCode}>
+            코드 작성하러 가기
+          </S.LinkToCreateCode>
+        </S.BlankCode>
+      ) : (
+        <S.CodeSection>
+          <S.SectionTitle>내가 작성한 코드</S.SectionTitle>
+          <S.CodeGrid>
+            {myCodes.map((code) => (
+              <S.CodeContainer
+                key={code.id}
+                onClick={() => handleCodeClick(code.id)}
+              >
+                <S.CodeBox>
+                  <CodeBlock
+                    noPadding
+                    code={code.code}
+                    language={code.language}
+                  />
+                </S.CodeBox>
+                <S.CodeInfo>
+                  <S.CodeTitle>{code.title}</S.CodeTitle>
+                  <S.StudentInfo>{code.student}</S.StudentInfo>
+                </S.CodeInfo>
+              </S.CodeContainer>
+            ))}
+          </S.CodeGrid>
+        </S.CodeSection>
+      )}
     </S.Container>
   );
 };

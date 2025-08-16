@@ -79,6 +79,7 @@ export const UserInfo = styled.div`
 
 export const ModalButton = styled.div`
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;

@@ -405,6 +405,7 @@ export const StatValue = styled.p`
 export const CodeSection = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   gap: 1.5rem;
   background-color: ${({ theme }) => theme.colors.background.primary};
   padding: 1.5rem;
@@ -473,6 +474,38 @@ export const CodeGrid = styled.div`
   @media (max-width: 479px) {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+`;
+
+export const BlankCode = styled.div`
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: ${({ theme }) => theme.colors.background.primary};
+  padding: 1.5rem;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+`;
+
+export const BlankTitle = styled.h2`
+  ${typography.heading3}
+  color: ${({ theme }) => theme.colors.text.primary};
+`;
+
+export const LinkToCreateCode = styled.button`
+  ${typography.body1}
+  color: ${({ theme }) => theme.colors.primary.blue};
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;
 

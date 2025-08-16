@@ -10,11 +10,14 @@ import { useUser } from "@/hooks/auth/login/useUser";
 import { useCodeNavigation } from "@/hooks/code/useCodeNavigation";
 import { chapters } from "@/constants/assignmentData";
 import type { CodeType } from "@/types/code/code";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CodeCreatePage = () => {
   const createCodeMutation = useCreateCode();
   const { data: user } = useUser();
-  const { goToCodeList, goToDetail } = useCodeNavigation();
+  const { goToDetail } = useCodeNavigation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [code, setCode] = useState("");
   const [title, setTitle] = useState("");
@@ -48,7 +51,11 @@ const CodeCreatePage = () => {
   };
 
   const handleGoBack = () => {
-    goToCodeList();
+    if (location.state?.fromProfile) {
+      navigate("/profile");
+    } else {
+      navigate("/code");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -80,7 +87,9 @@ const CodeCreatePage = () => {
   return (
     <S.Container>
       <S.Header>
-        <BackButton onClick={handleGoBack}>코드 목록</BackButton>
+        <BackButton onClick={handleGoBack}>
+          {location.state?.fromProfile ? "프로필로 돌아가기" : "코드 전체보기"}
+        </BackButton>
       </S.Header>
       <S.MainContent>
         <S.EditorSection>

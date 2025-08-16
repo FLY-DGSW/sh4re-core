@@ -10,6 +10,7 @@ import ProfileIcon from "@/assets/sidebar/profile.svg";
 import SunIcon from "@/assets/sidebar/sun.svg";
 import MoonIcon from "@/assets/sidebar/moon.svg";
 import LogoutIcon from "@/assets/sidebar/logout.svg";
+import UserEditIcon from "@/assets/sidebar/userEdit.svg";
 import { useTheme } from "@/styles/theme/useTheme";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Modal from "@/components/ui/Modal";
@@ -54,6 +55,10 @@ const Sidebar = () => {
     }
   };
 
+  const handleEditUserInfo = () => {
+    navigate("/profile/edit");
+  };
+
   return (
     <S.SidebarContainer>
       <S.Logo src={Sh4reLogo} alt='Sh4re Logo' />
@@ -84,6 +89,10 @@ const Sidebar = () => {
         <S.ModalButton onClick={handleToggleTheme}>
           {theme === "light" ? <MoonIcon /> : <SunIcon />}
           <span>{theme === "light" ? "다크 모드" : "라이트 모드"}</span>
+        </S.ModalButton>
+        <S.ModalButton onClick={handleEditUserInfo}>
+          <UserEditIcon />
+          <span>내 정보 변경</span>
         </S.ModalButton>
         <S.ModalButton onClick={handleLogout}>
           <LogoutIcon />
