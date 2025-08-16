@@ -32,7 +32,9 @@ sh4reCustomAxios.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const res = await axios.post(`${SERVER_URL}/api/auth/refresh`, null);
+        const res = await axios.post(`${SERVER_URL}/api/auth/refresh`, null, {
+          withCredentials: true,
+        });
 
         const { accessToken } = res.data.data;
         token.setToken(ACCESS_TOKEN_KEY, accessToken);

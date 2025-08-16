@@ -14,12 +14,16 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    
+
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      sh4reCustomAxios.post("/user/theme", {
-        themeName: theme,
-      });
+      sh4reCustomAxios
+        .post("/user/theme", {
+          themeName: theme,
+        })
+        .catch(() => {
+          // 테마 설정 실패는 무시
+        });
     }
   }, [theme]);
 
@@ -29,4 +33,3 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
     </ThemeContext.Provider>
   );
 };
-
