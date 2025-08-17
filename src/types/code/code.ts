@@ -10,7 +10,6 @@ export interface CodeType {
   createdAt: string;
   updatedAt: string;
   description?: string;
-  likes?: number;
 }
 
 export interface CodeDetailType {
@@ -27,7 +26,6 @@ export interface CodeDetailType {
   createdAt: string;
   updatedAt: string;
 }
-
 
 export interface UpdateCodeReq {
   title: string;
