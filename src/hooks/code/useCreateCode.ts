@@ -10,15 +10,11 @@ export interface CreateCodeRequest {
   assignment?: string;
   code: string;
   className: string;
+  useAiDescription?: boolean;
 }
 
 interface CreateCodeResponse {
-  ok: boolean;
-  code: string;
-  message: string;
-  data: {
-    codeId: number;
-  };
+  id: number;
 }
 
 const createCode = async (
@@ -32,7 +28,7 @@ const createCode = async (
     delete sanitizedData.description;
   }
 
-  const response = await sh4reCustomAxios.post("/codes", sanitizedData);
+  const response = await sh4reCustomAxios.post<CreateCodeResponse>("/codes", sanitizedData);
   return response.data;
 };
 

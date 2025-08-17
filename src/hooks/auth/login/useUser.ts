@@ -9,8 +9,8 @@ export const useUser = () => {
   return useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const { data } = await sh4reCustomAxios.get("/user/me");
-      return data.data.me;
+      const { data } = await sh4reCustomAxios.get("/users/me");
+      return data.me;
     },
     staleTime: 5 * 60 * 1000,
     enabled: !!accessToken,

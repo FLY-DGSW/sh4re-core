@@ -11,7 +11,7 @@ const fetchAnnouncements = async (): Promise<Announcement[]> => {
   const res = await sh4reCustomAxios.get<AnnouncementsApiResponse>(
     "/announcements"
   );
-  return res.data.data.announcements;
+  return res.data.announcements;
 };
 
 export const useAnnouncements = (searchTerm: string) => {

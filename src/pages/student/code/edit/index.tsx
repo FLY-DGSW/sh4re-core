@@ -8,8 +8,7 @@ import { useCode } from "@/hooks/code/useCode";
 import { useUser } from "@/hooks/auth/login/useUser";
 import { useCodeNavigation } from "@/hooks/code/useCodeNavigation";
 import { chapters } from "@/constants/assignmentData";
-import type { CodeType } from "@/types/code/code";
-import type { CreateCodeRequest } from "@/hooks/code/useCreateCode";
+import type { CodeType, UpdateCodeReq } from "@/types/code/code";
 
 const CodeEditPage = () => {
   const { codeId } = useParams<{ codeId: string }>();
@@ -36,7 +35,7 @@ const CodeEditPage = () => {
     if (existingCode) {
       setCode(existingCode.code);
       setTitle(existingCode.title);
-      setDescription("");
+      setDescription(existingCode.description || "");
       setLanguage(existingCode.language);
       setAssignment(existingCode.assignment || "");
     }
@@ -76,7 +75,7 @@ const CodeEditPage = () => {
 
     const className = `${user.grade}-${user.classNumber}`;
 
-    const updateData: CreateCodeRequest = {
+    const updateData: UpdateCodeReq = {
       title: title.trim(),
       code: code.trim(),
       language,

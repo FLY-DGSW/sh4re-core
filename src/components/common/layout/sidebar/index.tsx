@@ -47,7 +47,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     try {
-      await sh4reCustomAxios.post("/api/auth/logout");
+      await sh4reCustomAxios.post("/auth/logout");
       token.removeToken();
       navigate("/login");
     } catch (error) {
