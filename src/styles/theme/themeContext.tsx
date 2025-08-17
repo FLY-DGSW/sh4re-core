@@ -18,7 +18,7 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       sh4reCustomAxios
-        .post("/user/theme", {
+        .post("/users/theme", {
           themeName: theme,
         })
         .catch(() => {

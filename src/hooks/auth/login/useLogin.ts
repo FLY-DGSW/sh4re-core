@@ -20,13 +20,10 @@ const useLogin = () => {
         toast.info("비밀번호를 입력해주세요.");
         return;
       } else {
-        const { data } = await sh4reCustomAxios.post(
-          "/api/auth/login",
-          userInfo
-        );
+        const { data } = await sh4reCustomAxios.post("/auth/login", userInfo);
 
         if (data) {
-          const accessToken = data.data.accessToken;
+          const accessToken = data.accessToken;
           token.setToken(ACCESS_TOKEN_KEY, accessToken);
           const { data: user } = await refetchUser();
           toast.success(`${user.name}님, 환영합니다!`);

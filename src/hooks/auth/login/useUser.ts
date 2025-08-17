@@ -1,6 +1,7 @@
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
 import { ACCESS_TOKEN_KEY } from "@/constants/token.constants";
 import token from "@/libs/token/token";
+import { UserWithClassInfo } from "@/types/user/user";
 import { useQuery } from "@tanstack/react-query";
 
 export const useUser = () => {
@@ -8,9 +9,9 @@ export const useUser = () => {
 
   return useQuery({
     queryKey: ["user"],
-    queryFn: async () => {
-      const { data } = await sh4reCustomAxios.get("/user/me");
-      return data.data.me;
+    queryFn: async (): Promise<UserWithClassInfo> => {
+      const { data } = await sh4reCustomAxios.get("/users/me");
+      return data.me;
     },
     staleTime: 5 * 60 * 1000,
     enabled: !!accessToken,

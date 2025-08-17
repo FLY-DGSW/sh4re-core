@@ -1,23 +1,16 @@
+// response용
 export interface Announcement {
   id: number;
   label: "과제" | "공지";
   title: string;
   author: string;
-  content?: string;
-  schoolYear?: number;
-  grade?: number;
-  classNumber?: number;
-  userId?: number;
-  createdAt?: string;
+  content: string;
+  createdAt: string;
 }
 
+
 export interface AnnouncementsApiResponse {
-  ok: boolean;
-  code: string;
-  message: string;
-  data: {
-    announcements: Announcement[];
-  };
+  announcements: Announcement[];
 }
 
 export interface AnnouncementsLabelProps {

@@ -78,7 +78,7 @@ const CodeCreatePage = () => {
 
     try {
       const result = await createCodeMutation.mutateAsync(createData);
-      goToDetail(result.data.codeId);
+      goToDetail(result.id);
     } catch (error) {
       console.error("Failed to create code:", error);
     }

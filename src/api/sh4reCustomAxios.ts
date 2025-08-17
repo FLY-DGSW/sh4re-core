@@ -2,7 +2,8 @@ import { ACCESS_TOKEN_KEY } from "@/constants/token.constants";
 import token from "@/libs/token/token";
 import axios, { AxiosInstance } from "axios";
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = `${import.meta.env.VITE_SERVER_URL}/api/v1`;
+// 모든 엔드포인트 /api/v1로 시작해 통일적으로 사용
 
 const sh4reCustomAxios: AxiosInstance = axios.create({
   baseURL: SERVER_URL,
@@ -32,11 +33,11 @@ sh4reCustomAxios.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const res = await axios.post(`${SERVER_URL}/api/auth/refresh`, null, {
+        const res = await axios.post(`${SERVER_URL}/auth/refresh`, null, {
           withCredentials: true,
         });
 
-        const { accessToken } = res.data.data;
+        const { accessToken } = res.data;
         token.setToken(ACCESS_TOKEN_KEY, accessToken);
 
         originalRequest.headers = {
