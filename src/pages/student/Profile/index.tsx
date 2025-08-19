@@ -25,19 +25,19 @@ const ProfilePage = () => {
               <S.ProfileImage src='https://placehold.co/400' alt='Profile' />
               <S.UserInfoText>
                 <S.UserInfo>
-                  <S.UserName>{user.name}</S.UserName>
+                  <S.UserName>{user?.name}</S.UserName>
                   <S.UserDetailSecondary>
-                    @{user.username || user.name}
+                    @{user?.username || user?.name}
                   </S.UserDetailSecondary>
                 </S.UserInfo>
                 <S.UserDetail>
                   <SchoolIcon />
-                  대구소프트웨어마이스터고등학교 {user.grade}학년{" "}
-                  {user.classNumber}반 {user.studentNumber}번
+                  대구소프트웨어마이스터고등학교 {user?.grade}학년{" "}
+                  {user?.classNumber}반 {user?.studentNumber}번
                 </S.UserDetail>
                 <S.UserDetail style={{ marginLeft: "0.1rem" }}>
                   <EmailIcon />
-                  {user.email}
+                  {user?.email}
                 </S.UserDetail>
               </S.UserInfoText>
             </S.UserInfoRow>
@@ -98,7 +98,7 @@ const ProfilePage = () => {
                 </S.CodeBox>
                 <S.CodeInfo>
                   <S.CodeTitle>{code.title}</S.CodeTitle>
-                  <S.StudentInfo>{code.student}</S.StudentInfo>
+                  <S.StudentInfo>{code.authorName}</S.StudentInfo>
                 </S.CodeInfo>
               </S.CodeContainer>
             ))}

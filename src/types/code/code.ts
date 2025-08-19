@@ -1,30 +1,39 @@
 export interface CodeType {
   id: number;
   title: string;
-  student: string;
+  authorName: string;
   language: "python" | "sql" | "javascript";
   code: string;
   likeCount: number;
   className: string;
-  assignment?: string;
+  assignmentTitle?: string;
   createdAt: string;
   updatedAt: string;
-  description?: string;
 }
 
 export interface CodeDetailType {
   id: number;
   title: string;
-  student: string;
+  authorName: string;
   language: "python" | "sql" | "javascript";
   description?: string;
   code: string;
   likeCount: number;
   isLikedByUser: boolean;
   className: string;
-  assignment?: string;
+  assignmentTitle?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface CreateCodeReq {
+  title: string;
+  language: "python" | "sql" | "javascript";
+  description?: string;
+  code: string;
+  classPlacementId: number;
+  assignmentId?: number;
+  useAiDescription?: boolean;
 }
 
 export interface UpdateCodeReq {
@@ -32,6 +41,10 @@ export interface UpdateCodeReq {
   language: "python" | "sql" | "javascript";
   description?: string;
   code: string;
-  className: string;
-  assignment?: string;
+  classPlacementId: number;
+  assignmentId?: number;
+}
+
+export interface CodesApiResponse {
+  codes: CodeType[];
 }

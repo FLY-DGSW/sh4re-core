@@ -37,11 +37,11 @@ const CodeEditPage = () => {
       setTitle(existingCode.title);
       setDescription(existingCode.description || "");
       setLanguage(existingCode.language);
-      setAssignment(existingCode.assignment || "");
+      setAssignment(existingCode.assignmentTitle || "");
     }
   }, [existingCode]);
 
-  const isOwner = user && existingCode && user.name === existingCode.student;
+  const isOwner = user && existingCode && user.name === existingCode.authorName;
 
   const getMonacoLanguage = (lang: CodeType["language"]) => {
     switch (lang) {
@@ -73,15 +73,13 @@ const CodeEditPage = () => {
       return;
     }
 
-    const className = `${user.grade}-${user.classNumber}`;
-
     const updateData: UpdateCodeReq = {
       title: title.trim(),
       code: code.trim(),
       language,
       description: description.trim() || undefined,
-      assignment: assignment.trim() || undefined,
-      className: className,
+      assignmentId: assignment.trim() ? undefined : undefined,
+      classPlacementId: 1,
     };
 
     try {

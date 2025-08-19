@@ -100,7 +100,7 @@ const CodePage = () => {
               </S.CodeBox>
               <S.CodeInfo>
                 <S.CodeTitle>{code.title}</S.CodeTitle>
-                <S.StudentInfo>{code.student}</S.StudentInfo>
+                <S.StudentInfo>{code.authorName}</S.StudentInfo>
               </S.CodeInfo>
             </S.CodeContainer>
           ))

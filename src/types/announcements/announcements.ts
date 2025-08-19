@@ -1,13 +1,34 @@
-// response용
+export interface CreateAnnouncementReq {
+  label: string;
+  title: string;
+  author: string;
+  content: string;
+  target: {
+    year: number;
+    grade: number;
+    classNumber: number;
+  };
+}
+
+export interface UpdateAnnouncementReq {
+  label: string;
+  title: string;
+  author: string;
+  content: string;
+}
+
+export interface CreateAnnouncementResponse {
+  id: number;
+}
+
 export interface Announcement {
   id: number;
-  label: "과제" | "공지";
+  label: string;
   title: string;
   author: string;
   content: string;
   createdAt: string;
 }
-
 
 export interface AnnouncementsApiResponse {
   announcements: Announcement[];

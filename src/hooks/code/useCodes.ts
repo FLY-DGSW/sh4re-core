@@ -1,14 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
 import { CODE } from "@/constants/queryKeys";
-import type { CodeType } from "@/types/code/code";
-
-interface GetAllCodesResponse {
-  codes: CodeType[];
-}
+import type { CodeType, CodesApiResponse } from "@/types/code/code";
 
 const fetchCodes = async (): Promise<CodeType[]> => {
-  const response = await sh4reCustomAxios.get<GetAllCodesResponse>("/codes");
+  const response = await sh4reCustomAxios.get<CodesApiResponse>("/codes");
   return response.data.codes;
 };
 

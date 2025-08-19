@@ -39,7 +39,7 @@ const AnnouncementsItem = ({
   return (
     <S.ItemWrapper className={className}>
       <S.Item onClick={onClick}>
-        <S.Label label={announcement.label}>[{announcement.label}]</S.Label>
+        <S.Label label={announcement.label as "과제" | "공지"}>[{announcement.label}]</S.Label>
         <S.Title>{announcement.title}</S.Title>
         <S.Meta>
           <S.Date>
