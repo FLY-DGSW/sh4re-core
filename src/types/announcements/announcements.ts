@@ -1,5 +1,5 @@
 export interface CreateAnnouncementReq {
-  label: string;
+  label: "과제" | "공지";
   title: string;
   author: string;
   content: string;
@@ -11,7 +11,7 @@ export interface CreateAnnouncementReq {
 }
 
 export interface UpdateAnnouncementReq {
-  label: string;
+  label: "과제" | "공지";
   title: string;
   author: string;
   content: string;
@@ -23,7 +23,7 @@ export interface CreateAnnouncementResponse {
 
 export interface Announcement {
   id: number;
-  label: string;
+  label: "과제" | "공지";
   title: string;
   author: string;
   content: string;

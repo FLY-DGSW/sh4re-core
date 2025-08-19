@@ -38,7 +38,7 @@ const AnnouncementsDetailPage = () => {
       <BackButton onClick={handleGoBack}>공지사항 목록</BackButton>
       <S.MainContent>
         <S.Header>
-          <S.Label label={announcement.label as "과제" | "공지"}>[{announcement.label}]</S.Label>
+          <S.Label label={announcement.label}>[{announcement.label}]</S.Label>
           <S.Title>{announcement.title}</S.Title>
           <S.Meta>
             {formatDateTimeToMinute(announcement.createdAt)} ·{" "}

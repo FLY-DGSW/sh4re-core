@@ -7,7 +7,7 @@ import { useUpdateCode } from "@/hooks/code/useUpdateCode";
 import { useCode } from "@/hooks/code/useCode";
 import { useUser } from "@/hooks/auth/login/useUser";
 import { useCodeNavigation } from "@/hooks/code/useCodeNavigation";
-import { chapters } from "@/constants/assignmentData";
+import { useApiAssignments } from "@/hooks/assignment/useApiAssignments";
 import type { CodeType, UpdateCodeReq } from "@/types/code/code";
 
 const CodeEditPage = () => {
@@ -16,6 +16,7 @@ const CodeEditPage = () => {
   const { data: user } = useUser();
   const { data: existingCode, isLoading, error } = useCode(Number(codeId));
   const { goToDetail } = useCodeNavigation();
+  const { data: assignmentsData } = useApiAssignments();
 
   const [code, setCode] = useState("");
   const [title, setTitle] = useState("");
@@ -23,13 +24,19 @@ const CodeEditPage = () => {
   const [language, setLanguage] = useState<CodeType["language"]>("python");
   const [assignment, setAssignment] = useState("");
 
-  const allAssignments = chapters.flatMap((chapter) =>
-    chapter.assignments.map((assignment) => ({
-      id: assignment.id,
-      title: assignment.title,
-      chapterTitle: chapter.title,
-    }))
-  );
+  const allAssignments = assignmentsData?.assignments?.map((assignment) => ({
+    id: assignment.id,
+    title: assignment.title,
+    subject: assignment.subject.name,
+  })) || [];
+
+  const getAssignmentId = (assignmentTitle: string): number | undefined => {
+    if (!assignmentTitle.trim()) return undefined;
+    const foundAssignment = allAssignments.find(
+      (assignment) => assignment.title === assignmentTitle.trim()
+    );
+    return foundAssignment?.id;
+  };
 
   useEffect(() => {
     if (existingCode) {
@@ -78,7 +85,7 @@ const CodeEditPage = () => {
       code: code.trim(),
       language,
       description: description.trim() || undefined,
-      assignmentId: assignment.trim() ? undefined : undefined,
+      assignmentId: getAssignmentId(assignment),
       classPlacementId: 1,
     };
 
@@ -196,7 +203,7 @@ const CodeEditPage = () => {
                 <option value=''>과제를 선택하세요</option>
                 {allAssignments.map((assignment) => (
                   <option key={assignment.id} value={assignment.title}>
-                    [{assignment.chapterTitle}] {assignment.title}
+                    [{assignment.subject}] {assignment.title}
                   </option>
                 ))}
               </S.Select>

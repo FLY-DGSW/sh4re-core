@@ -7,7 +7,7 @@ export interface CreateCodeRequest {
   title: string;
   description?: string;
   language: "python" | "sql" | "javascript";
-  assignment?: string;
+  assignmentId?: number;
   code: string;
   className: string;
   useAiDescription?: boolean;
@@ -25,6 +25,7 @@ const createCode = async (
     language: data.language,
     code: data.code,
     classPlacementId: 1, // int만 들어있는 array로 수정
+    assignmentId: data.assignmentId,
     description: data.description,
     useAiDescription: data.useAiDescription,
   };

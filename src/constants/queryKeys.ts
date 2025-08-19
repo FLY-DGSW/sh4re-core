@@ -6,3 +6,7 @@ export const CODE = {
 export const ANNOUNCEMENTS_QUERY_KEY = {
   all: ["announcements"],
 };
+
+export const ASSIGNMENTS_QUERY_KEY = {
+  all: ["assignments"],
+};
