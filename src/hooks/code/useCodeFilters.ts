@@ -59,7 +59,7 @@ export const useCodeFilters = (
 
   const assignmentOptions = useMemo(() => {
     const uniqueAssignments = Array.from(
-      new Set(safeCodesArray.map((code) => code.assignment))
+      new Set(safeCodesArray.map((code) => code.assignmentTitle))
     ).filter(Boolean);
 
     return [
@@ -78,9 +78,7 @@ export const useCodeFilters = (
         return (
           code.title.toLowerCase().includes(lowerCaseSearchTerm) ||
           code.code.toLowerCase().includes(lowerCaseSearchTerm) ||
-          (code.description &&
-            code.description.toLowerCase().includes(lowerCaseSearchTerm)) ||
-          code.student.toLowerCase().includes(lowerCaseSearchTerm)
+          code.authorName.toLowerCase().includes(lowerCaseSearchTerm)
         );
       })
       .filter(
@@ -88,7 +86,7 @@ export const useCodeFilters = (
       )
       .filter(
         (code) =>
-          selectedAssignment === "all" || code.assignment === selectedAssignment
+          selectedAssignment === "all" || code.assignmentTitle === selectedAssignment
       )
       .sort((a, b) => {
         if (sortOrder === "latest") {

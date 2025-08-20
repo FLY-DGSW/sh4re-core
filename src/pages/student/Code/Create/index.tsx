@@ -8,7 +8,7 @@ import {
 } from "@/hooks/code/useCreateCode";
 import { useUser } from "@/hooks/auth/login/useUser";
 import { useCodeNavigation } from "@/hooks/code/useCodeNavigation";
-import { chapters } from "@/constants/assignmentData";
+import { useApiAssignments } from "@/hooks/assignment/useApiAssignments";
 import type { CodeType } from "@/types/code/code";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -18,6 +18,7 @@ const CodeCreatePage = () => {
   const { goToDetail } = useCodeNavigation();
   const navigate = useNavigate();
   const location = useLocation();
+  const { data: assignmentsData } = useApiAssignments();
 
   const [code, setCode] = useState("");
   const [title, setTitle] = useState("");
@@ -25,13 +26,19 @@ const CodeCreatePage = () => {
   const [language, setLanguage] = useState<CodeType["language"]>("python");
   const [assignment, setAssignment] = useState("");
 
-  const allAssignments = chapters.flatMap((chapter) =>
-    chapter.assignments.map((assignment) => ({
-      id: assignment.id,
-      title: assignment.title,
-      chapterTitle: chapter.title,
-    }))
-  );
+  const allAssignments = assignmentsData?.assignments?.map((assignment) => ({
+    id: assignment.id,
+    title: assignment.title,
+    subject: assignment.subject.name,
+  })) || [];
+
+  const getAssignmentId = (assignmentTitle: string): number | undefined => {
+    if (!assignmentTitle.trim()) return undefined;
+    const foundAssignment = allAssignments.find(
+      (assignment) => assignment.title === assignmentTitle.trim()
+    );
+    return foundAssignment?.id;
+  };
 
   const getMonacoLanguage = (lang: CodeType["language"]) => {
     switch (lang) {
@@ -72,7 +79,7 @@ const CodeCreatePage = () => {
       code: code.trim(),
       language,
       description: description.trim() || undefined,
-      assignment: assignment.trim() || undefined,
+      assignmentId: getAssignmentId(assignment),
       className: className,
     };
 
@@ -178,7 +185,7 @@ const CodeCreatePage = () => {
                 <option value=''>과제를 선택하세요</option>
                 {allAssignments.map((assignment) => (
                   <option key={assignment.id} value={assignment.title}>
-                    [{assignment.chapterTitle}] {assignment.title}
+                    [{assignment.subject}] {assignment.title}
                   </option>
                 ))}
               </S.Select>

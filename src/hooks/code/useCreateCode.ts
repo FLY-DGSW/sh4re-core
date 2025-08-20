@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import sh4reCustomAxios from "@/api/sh4reCustomAxios";
 import { CODE } from "@/constants/queryKeys";
-import type { CodeType } from "@/types/code/code";
+import type { CreateCodeReq } from "@/types/code/code";
 
 export interface CreateCodeRequest {
   title: string;
   description?: string;
-  language: CodeType["language"];
-  assignment?: string;
+  language: "python" | "sql" | "javascript";
+  assignmentId?: number;
   code: string;
   className: string;
   useAiDescription?: boolean;
@@ -20,15 +20,20 @@ interface CreateCodeResponse {
 const createCode = async (
   data: CreateCodeRequest
 ): Promise<CreateCodeResponse> => {
-  const sanitizedData = { ...data };
-  if (!sanitizedData.assignment) {
-    delete sanitizedData.assignment;
-  }
-  if (!sanitizedData.description) {
-    delete sanitizedData.description;
-  }
+  const apiData: CreateCodeReq = {
+    title: data.title,
+    language: data.language,
+    code: data.code,
+    classPlacementId: 1, // int만 들어있는 array로 수정
+    assignmentId: data.assignmentId,
+    description: data.description,
+    useAiDescription: data.useAiDescription,
+  };
 
-  const response = await sh4reCustomAxios.post<CreateCodeResponse>("/codes", sanitizedData);
+  const response = await sh4reCustomAxios.post<CreateCodeResponse>(
+    "/codes",
+    apiData
+  );
   return response.data;
 };
 

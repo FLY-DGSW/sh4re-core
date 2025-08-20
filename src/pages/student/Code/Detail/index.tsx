@@ -37,7 +37,7 @@ const CodeDetailPage = () => {
   const deleteCodeMutation = useDeleteCode();
   const toggleLikeMutation = useToggleCodeLike();
 
-  const isOwner = user && codeData && user.name === codeData.student;
+  const isOwner = user && codeData && user.name === codeData.authorName;
 
   const handleEdit = () => {
     navigate(`/code/${codeId}/edit`);
@@ -160,7 +160,7 @@ const CodeDetailPage = () => {
                   <div>
                     <S.CodeDetailsTitle>{codeData.title}</S.CodeDetailsTitle>
                     <S.CodeDetailsAuthor>
-                      by {codeData.student}
+                      by {codeData.authorName}
                     </S.CodeDetailsAuthor>
                   </div>
                   <S.CodeDetailsMeta>

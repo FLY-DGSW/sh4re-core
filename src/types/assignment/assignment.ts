@@ -1,3 +1,50 @@
+import type { Subject } from "@/types/subject/subject";
+import type { Unit } from "@/types/unit/unit";
+
+export interface ApiAssignment {
+  id: number;
+  title: string;
+  description: string;
+  inputExample?: string;
+  outputExample?: string;
+  deadline: string;
+  subject: Subject;
+  unit?: Unit;
+  userId: number;
+}
+
+export interface CreateAssignmentReq {
+  subjectId: number;
+  title: string;
+  description: string;
+  inputExample?: string;
+  outputExample?: string;
+  deadline: string;
+  unitId?: number;
+}
+
+export interface UpdateAssignmentReq {
+  id: number;
+  title: string;
+  description: string;
+  inputExample?: string;
+  outputExample?: string;
+  deadline: string;
+  unitId?: number;
+}
+
+export interface DeleteAssignmentReq {
+  id: number;
+}
+
+export interface AssignmentsApiResponse {
+  assignments: ApiAssignment[];
+}
+
+export interface AssignmentApiResponse {
+  assignment: ApiAssignment;
+}
+
 export interface Assignment {
   id: number;
   label: "할당됨" | "제출됨" | "누락됨";

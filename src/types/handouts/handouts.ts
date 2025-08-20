@@ -1,3 +1,50 @@
+import type { Subject } from "@/types/subject/subject";
+import type { Unit } from "@/types/unit/unit";
+import type { UserWithClassInfo } from "@/types/user/user";
+
+export interface ApiHandout {
+  id: number;
+  title: string;
+  description: string;
+  fileUrl: string;
+  subject: Subject;
+  unit?: Unit;
+  authorId: number;
+}
+
+export interface HandoutDetail {
+  id: number;
+  title: string;
+  description: string;
+  author: UserWithClassInfo;
+  fileUrl: string;
+  subject: Subject;
+  authorId: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateHandoutReq {
+  title: string;
+  description: string;
+  fileUrl: string;
+  subjectId: number;
+  unitId?: number;
+}
+
+export interface UpdateHandoutReq {
+  id: number;
+  title: string;
+  description: string;
+  fileUrl: string;
+  subjectId: number;
+  unitId?: number;
+}
+
+export interface HandoutsApiResponse {
+  handouts: ApiHandout[];
+}
+
 export interface Handout {
   id: number;
   extension: "DOCX" | "PPTX" | "XLSX" | "HWP" | "PDF";

@@ -9,12 +9,12 @@ export const useProfilePage = () => {
 
   const myCodes = user
     ? codes
-        .filter((code) => code.student === user.name)
+        .filter((code) => code.authorName === user.name)
         .sort((a, b) => b.id - a.id)
     : [];
 
   const totalLikes = myCodes.reduce(
-    (sum, code) => sum + (code.likeCount || code.likes || 0),
+    (sum, code) => sum + (code.likeCount || 0),
     0
   );
 

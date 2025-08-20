@@ -26,7 +26,7 @@ const useLogin = () => {
           const accessToken = data.accessToken;
           token.setToken(ACCESS_TOKEN_KEY, accessToken);
           const { data: user } = await refetchUser();
-          toast.success(`${user.name}님, 환영합니다!`);
+          toast.success(`${user?.name}님, 환영합니다!`);
           navigate("/");
         }
       }
