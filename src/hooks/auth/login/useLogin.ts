@@ -23,7 +23,7 @@ const useLogin = () => {
         const { data } = await sh4reCustomAxios.post("/auth/login", userInfo);
 
         if (data) {
-          const accessToken = data.accessToken;
+          const accessToken = data.data.accessToken;
           token.setToken(ACCESS_TOKEN_KEY, accessToken);
           const { data: user } = await refetchUser();
           toast.success(`${user?.name}님, 환영합니다!`);

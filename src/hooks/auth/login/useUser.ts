@@ -11,8 +11,7 @@ export const useUser = () => {
     queryKey: ["user"],
     queryFn: async (): Promise<UserWithClassInfo> => {
       const { data } = await sh4reCustomAxios.get("/users/me");
-      console.log(data);
-      return data;
+      return data.data;
     },
     staleTime: 5 * 60 * 1000,
     enabled: !!accessToken,
